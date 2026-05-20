@@ -150,7 +150,9 @@ This was added in [pull request #1915: Render Nunjucks icon macro into SVG files
 
 #### Add a template with all components imported
 
-If you are using the Nunjucks macros, you can now extend the `template-with-imports.njk` base template instead of `template.njk`, which will import all components.
+If you are using our Nunjucks [page template](https://service-manual.nhs.uk/design-system/styles/page-template), you can now extend `template-with-imports.njk` instead of `template.njk` to automatically import all components.
+
+This was was added in [pull request #1921: Add a template with all components imported](https://github.com/nhsuk/nhsuk-frontend/pull/1921).
 
 ### :recycle: **Changes**
 
