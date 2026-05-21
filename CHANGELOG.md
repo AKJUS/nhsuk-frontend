@@ -26,7 +26,7 @@ If you are not using Nunjucks macros, use the HTML markup from the [search input
 
 This change was introduced in [pull request #1660: Add search input component](https://github.com/nhsuk/nhsuk-frontend/pull/1660).
 
-#### Add date input `day`, `month` and `year` options
+#### Add date input `day`, `month` and `year` Nunjucks options
 
 We've updated the date input component to add individual `day`, `month` and `year` Nunjucks options.
 
@@ -41,25 +41,29 @@ These new options can be used to partially override the defaults. For example, s
         isPageHeading: true
       }
     },
+    errorMessage: {
+      text: "Date of birth must include a year"
+    },
+    namePrefix: "dob",
+    values: data.dob,
 -   items: [
 -     {
--       name: "dob[day]",
+-       name: "day",
 -       label: "Day",
 -       width: 2
 -     },
 -     {
--       name: "dob[month]",
+-       name: "month",
 -       label: "Month",
 -       width: 2
 -     },
 -     {
--       name: "dob[year]",
+-       name: "year",
 -       label: "Year",
 -       width: 4,
 -       error: true
 -     }
 -   ]
-+   namePrefix: "dob",
 +   year: {
 +     error: true
 +   }
