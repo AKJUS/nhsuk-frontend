@@ -72,6 +72,21 @@ These new options can be used to partially override the defaults. For example, s
 
 This was added in [pull request #1869: Add date input `day`, `month` and `year` options](https://github.com/nhsuk/nhsuk-frontend/pull/1869).
 
+#### Updated Nunjucks macro options for components
+
+For consistency with other components, we’ve added new Nunjucks macro options:
+
+- Character count `autocomplete` option
+- Checkboxes and radios `formGroup.classes` option
+- Date input and password input `inputWrapper` option
+- Password input `code`, `prefix` and `suffix` options
+- Password input button `variant` option
+- Radios `formGroup.classes` option
+
+Visit the [design system in the NHS digital service manual](https://service-manual.nhs.uk/design-system/components) to see Nunjucks options for each component.
+
+This was added in [pull request #1916: Add disabled component examples and review Nunjucks options](https://github.com/nhsuk/nhsuk-frontend/pull/1916).
+
 #### Added a top-level `disabled` Nunjucks option to more form controls
 
 We’ve updated more components to include a top-level `disabled` Nunjucks option. This will make it easier to set the disabled state for these form controls.
