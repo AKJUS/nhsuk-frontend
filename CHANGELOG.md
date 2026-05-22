@@ -72,6 +72,21 @@ These new options can be used to partially override the defaults. For example, s
 
 This was added in [pull request #1869: Add date input `day`, `month` and `year` options](https://github.com/nhsuk/nhsuk-frontend/pull/1869).
 
+#### Added a top-level `disabled` Nunjucks option to more form controls
+
+We’ve updated more components to include a top-level `disabled` Nunjucks option. This will make it easier to set the disabled state for these form controls.
+
+- Character count `disabled` option
+- Checkboxes and radios `disabled` option
+- Date input `disabled` option
+- Password input `disabled` option
+
+Disabled form controls have poor contrast and can confuse some users, so avoid them if possible.
+
+Only use disabled form controls if research shows it makes the user interface easier to understand.
+
+This was added in [pull request #1916: Add disabled component examples and review Nunjucks options](https://github.com/nhsuk/nhsuk-frontend/pull/1916).
+
 #### Add icons to buttons
 
 You can now [add icons](https://service-manual.nhs.uk/design-system/styles/icons) to buttons using the `icon` Nunjucks options.
