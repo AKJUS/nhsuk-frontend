@@ -181,6 +181,36 @@
       <form method="post" novalidate>
         {% call fieldset({
           legend: {
+            text: "Password input with prefix",
+            size: "m"
+          }
+        }) %}
+          {{ passwordInput({
+            label: {
+              text: "Secret code",
+              classes: "nhsuk-u-visually-hidden"
+            },
+            prefix: {
+              text: "PIN"
+            },
+            id: "example-password-1",
+            name: "example-password-1",
+            value: "3.14159",
+            width: 5,
+            code: true,
+            button: {
+              variant: "brand"
+            },
+            formGroup: {
+              classes: "nhsuk-u-width-one-half"
+            }
+          }) }}
+        {% endcall %}
+      </form>
+
+      <form method="post" novalidate>
+        {% call fieldset({
+          legend: {
             text: "Input and icon button",
             size: "m"
           }
