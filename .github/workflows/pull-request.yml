@@ -76,7 +76,7 @@ jobs:
 
           - description: TypeScript compiler
             name: lint-types
-            run: npm run lint:types
+            run: npm run lint:types -- --force
             cache: '**/*.tsbuildinfo'
 
     steps:
@@ -133,16 +133,16 @@ jobs:
             name: test-component
             run: npm run install:puppeteer
             cache: |
+              ~/.cache/puppeteer
               .cache/jest
-              .cache/puppeteer
             coverage: true
 
           - description: Accessibility tests
             name: test-accessibility
             run: npm run install:puppeteer
             cache: |
+              ~/.cache/puppeteer
               .cache/jest
-              .cache/puppeteer
 
     steps:
       - name: Checkout
@@ -317,4 +317,4 @@ jobs:
 
       - name: Sonar analysis
         if: ${{ env.SONAR_TOKEN }}
-        uses: SonarSource/sonarqube-scan-action@v7.1.0
+        uses: SonarSource/sonarqube-scan-action@v8.1.0
