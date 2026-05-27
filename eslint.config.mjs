@@ -248,7 +248,8 @@ export default defineConfig([
     rules: {
       '@typescript-eslint/no-empty-function': 'off',
       'promise/always-return': 'off',
-      'promise/catch-or-return': 'off'
+      'promise/catch-or-return': 'off',
+      'testing-library/no-node-access': 'off'
     }
   },
   {
