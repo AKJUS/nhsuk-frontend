@@ -133,16 +133,16 @@ jobs:
             name: test-component
             run: npm run install:puppeteer
             cache: |
+              ~/.cache/puppeteer
               .cache/jest
-              .cache/puppeteer
             coverage: true
 
           - description: Accessibility tests
             name: test-accessibility
             run: npm run install:puppeteer
             cache: |
+              ~/.cache/puppeteer
               .cache/jest
-              .cache/puppeteer
 
     steps:
       - name: Checkout
