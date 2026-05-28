@@ -20,6 +20,9 @@ module.exports = defineConfig({
     // Allow headings to begin from <h2> etc rather than <h1>
     'heading-level': 'off',
 
+    // Allow autocapitalize attribute on input type="password"
+    'input-attributes': 'off',
+
     // Allow long page titles with appended "- NHS.UK frontend"
     'long-title': 'off',
 
