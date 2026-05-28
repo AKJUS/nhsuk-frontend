@@ -17,11 +17,8 @@ module.exports = defineConfig({
     // Allow for multiple buttons in the same form to have the same name
     'form-dup-name': ['error', { shared: ['radio', 'checkbox', 'submit'] }],
 
-    // Allow inline styles for testing purposes
-    'no-inline-style': [
-      'error',
-      { allowedProperties: ['background-image', 'margin-bottom'] }
-    ],
+    // Allow headings to begin from <h2> etc rather than <h1>
+    'heading-level': 'off',
 
     // Allow long page titles with appended "- NHS.UK frontend"
     'long-title': 'off',
@@ -29,8 +26,11 @@ module.exports = defineConfig({
     // Allow implicit type="button" (without attribute):
     'no-implicit-button-type': 'off',
 
-    // Allow headings to begin from <h2> etc rather than <h1>
-    'heading-level': 'off',
+    // Allow inline styles for testing purposes
+    'no-inline-style': [
+      'error',
+      { allowedProperties: ['background-image', 'margin-bottom'] }
+    ],
 
     // More hassle than it's worth 👾
     'no-trailing-whitespace': 'off',
