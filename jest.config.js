@@ -1,7 +1,4 @@
-const jestPuppeteerConfig = require('./jest-puppeteer.config.js')
-
-// Detect when browser has been launched headless
-const { headless = true } = jestPuppeteerConfig.launch
+const { HEADLESS } = process.env
 
 /**
  * Jest project config defaults
@@ -36,9 +33,10 @@ module.exports = {
   ],
 
   // Reduce CPU usage during project test runs
-  maxWorkers: headless
-    ? '50%' // Matches Jest default (50%) via `--watch`
-    : 1, // Use only 1x browser window using `HEADLESS=false`
+  maxWorkers:
+    HEADLESS !== 'false'
+      ? '50%' // Matches Jest default (50%) via `--watch`
+      : 1, // Use only 1x browser window using `HEADLESS=false`
 
   projects: [
     {

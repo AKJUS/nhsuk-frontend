@@ -1,6 +1,5 @@
 const { getComponentURL } = require('@nhsuk/frontend-helpers/puppeteer.mjs')
 const { components, screenshots } = require('@nhsuk/frontend-lib')
-const { executablePath } = require('puppeteer')
 
 const { HEADLESS } = process.env
 
@@ -79,7 +78,6 @@ module.exports = {
       '--force-device-scale-factor=1'
     ],
     browser: 'chromium',
-    executablePath: executablePath(),
 
     // Reduce navigation timeout from 30s to 5s
     gotoParameters: {
