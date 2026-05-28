@@ -189,14 +189,6 @@ If you are not using Nunjucks macros, update your HTML markup using the [header 
 
 This change was introduced in [pull request #1712: Add support for icon buttons](https://github.com/nhsuk/nhsuk-frontend/pull/1712).
 
-#### Update reverse button colour to light blue
-
-We've updated the reverse button to use the same light blue background colour as the header search button, rather than a dull grey.
-
-The button's active state text now has a contrast ratio of 7:1 to help meet the WCAG 2.2 (AAA) accessibility standard.
-
-This change was introduced in [pull request #1898: Update reverse button colour to light blue](https://github.com/nhsuk/nhsuk-frontend/pull/1898).
-
 ### :wrench: **Fixes**
 
 - [#1890: Refactor character count method to reduce repeated updates](https://github.com/nhsuk/nhsuk-frontend/pull/1890)
