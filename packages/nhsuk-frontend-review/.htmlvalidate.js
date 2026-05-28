@@ -18,7 +18,10 @@ module.exports = defineConfig({
     'form-dup-name': ['error', { shared: ['radio', 'checkbox', 'submit'] }],
 
     // Allow inline styles for testing purposes
-    'no-inline-style': 'off',
+    'no-inline-style': [
+      'error',
+      { allowedProperties: ['background-image', 'margin-bottom'] }
+    ],
 
     // Allow long page titles with appended "- NHS.UK frontend"
     'long-title': 'off',
@@ -33,9 +36,8 @@ module.exports = defineConfig({
     'no-trailing-whitespace': 'off',
 
     // Allow use of roles where there are native elements that would give
-    // us that role automatically, e.g. <button> instead of
-    // <a href="/" draggable="false" role="button">
-    'prefer-native-element': 'off',
+    // use that role automatically, e.g. <section> not <div role="region">
+    'prefer-native-element': ['error', { include: ['div'] }],
 
     // Allow optional subresource integrity (SRI)
     'require-sri': 'off',
