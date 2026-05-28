@@ -10,10 +10,6 @@ const { defineConfig } = require('html-validate')
 module.exports = defineConfig({
   extends: ['html-validate:recommended', 'html-validate:document'],
   rules: {
-    // Allow components to set boolean attributes with empty values
-    // e.g. using `disabled: true` for <button disabled="disabled">
-    'attribute-boolean-style': 'off',
-
     // Allow for multiple buttons in the same form to have the same name
     'form-dup-name': ['error', { shared: ['radio', 'checkbox', 'submit'] }],
 
@@ -55,8 +51,7 @@ module.exports = defineConfig({
     // only containing letters, numbers, underscores and dashes – which is
     // more restrictive than the spec allows.
     //
-    // Relax the rule to allow anything that is valid according to the
-    // spec.
+    // Relax the rule to allow anything that is valid according to the spec
     'valid-id': ['error', { relaxed: true }]
   },
 
