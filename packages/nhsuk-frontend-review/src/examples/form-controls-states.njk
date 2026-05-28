@@ -92,6 +92,7 @@
               label: item.label,
               errorMessage: item.errorMessage,
               id: "input-with-value" if value else "input",
+              name: "input-with-value" if value else "input",
               value: value,
               disabled: item.disabled,
               classes: item.classes,
@@ -116,6 +117,7 @@
               label: item.label,
               errorMessage: item.errorMessage,
               id: "password-input-with-value" if value else "password-input",
+              name: "password-input-with-value" if value else "password-input",
               value: value,
               disabled: item.disabled,
               classes: item.classes,
@@ -140,6 +142,7 @@
               label: item.label,
               errorMessage: item.errorMessage,
               id: "textarea-with-value" if value else "textarea",
+              name: "textarea-with-value" if value else "textarea",
               value: value,
               disabled: item.disabled,
               classes: item.classes,
@@ -164,6 +167,7 @@
               label: item.label,
               errorMessage: item.errorMessage,
               id: "select-with-value" if value else "select",
+              name: "select-with-value" if value else "select",
               value: value,
               items: exampleOptions,
               disabled: item.disabled,
@@ -185,6 +189,7 @@
       {{ uniqueHTML(
         checkboxes({
           idPrefix: "checkboxes",
+          name: "checkboxes",
           items: exampleItems
         }),
         loop.index
@@ -195,6 +200,7 @@
       {{ uniqueHTML(
         radios({
           idPrefix: "radios",
+          name: "radios",
           items: exampleItems
         }),
         loop.index
@@ -209,6 +215,7 @@
       {{ uniqueHTML(
         checkboxes({
           idPrefix: "checkboxes-small",
+          name: "checkboxes-small",
           small: true,
           items: exampleItemsSmall
         }),
@@ -220,6 +227,7 @@
       {{ uniqueHTML(
         radios({
           idPrefix: "radios-small",
+          name: "radios-small",
           small: true,
           items: exampleItemsSmall
         }),
@@ -238,6 +246,7 @@
             label: item.label,
             errorMessage: item.errorMessage,
             id: "file-upload",
+            name: "file-upload",
             classes: item.classes,
             disabled: item.disabled,
             attributes: item.attributes,

@@ -392,7 +392,8 @@
               suffix: {
                 text: "st"
               },
-              id: "weight-stone"
+              id: "weight-stone",
+              name: "weight-stone"
             }) }}
 
             {{ input({
@@ -402,7 +403,8 @@
               suffix: {
                 text: "lb"
               },
-              id: "weight-pound"
+              id: "weight-pound",
+              name: "weight-pound"
             }) }}
           </div>
         {% endcall %}
@@ -420,7 +422,8 @@
               label: {
                 text: "Keywords"
               },
-              id: "keywords-group"
+              id: "keywords-group",
+              name: "keywords-group"
             }) }}
 
             {{ select({
@@ -465,6 +468,7 @@
                 text: "Keywords"
               },
               id: "keywords-checkboxes",
+              name: "keywords-checkboxes",
               formGroup: {
                 classes: "nhsuk-u-width-one-third"
               }
@@ -497,6 +501,7 @@
                 text: "Keywords"
               },
               id: "keywords-radios",
+              name: "keywords-radios",
               formGroup: {
                 classes: "nhsuk-u-width-one-third"
               }
@@ -560,7 +565,8 @@
             label: {
               text: "Input with nhsuk-u-width-one-quarter (25% width)"
             },
-            id: "nhsuk-u-width-one-quarter",
+            id: "width-one-quarter",
+            name: "width-one-quarter",
             classes: "nhsuk-u-width-one-quarter"
           }) }}
 
@@ -568,7 +574,8 @@
             label: {
               text: "Input with nhsuk-u-width-one-third (33% width)"
             },
-            id: "nhsuk-u-width-one-third",
+            id: "width-one-third",
+            name: "width-one-third",
             classes: "nhsuk-u-width-one-third"
           }) }}
 
@@ -576,7 +583,8 @@
             label: {
               text: "Input with nhsuk-u-width-one-half (50% width)"
             },
-            id: "nhsuk-u-width-one-half",
+            id: "width-one-half",
+            name: "width-one-half",
             classes: "nhsuk-u-width-one-half"
           }) }}
 
@@ -584,7 +592,8 @@
             label: {
               text: "Input with nhsuk-u-width-two-thirds (66% width)"
             },
-            id: "nhsuk-u-width-two-thirds",
+            id: "width-two-thirds",
+            name: "width-two-thirds",
             classes: "nhsuk-u-width-two-thirds"
           }) }}
 
@@ -592,7 +601,8 @@
             label: {
               text: "Input with nhsuk-u-width-three-quarters (75% width)"
             },
-            id: "nhsuk-u-width-three-quarters",
+            id: "width-three-quarters",
+            name: "width-three-quarters",
             classes: "nhsuk-u-width-three-quarters"
           }) }}
 
@@ -600,7 +610,8 @@
             label: {
               text: "Input with nhsuk-u-width-full (100% width)"
             },
-            id: "nhsuk-u-width-full",
+            id: "width-full",
+            name: "width-full",
             classes: "nhsuk-u-width-full"
           }) }}
         {% endcall %}
