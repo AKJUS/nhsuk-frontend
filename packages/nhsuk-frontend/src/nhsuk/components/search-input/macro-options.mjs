@@ -41,14 +41,14 @@ const options = {
   label: {
     type: 'object',
     required: true,
-    description: 'The label used by the text input component.',
+    description: 'The label used by the search input component.',
     released: '10.5.0',
     isComponent: true
   },
   hint: {
     type: 'object',
     required: false,
-    description: 'Can be used to add a hint to a text input component.',
+    description: 'Can be used to add a hint to a search input component.',
     released: '10.5.0',
     isComponent: true
   },
@@ -56,9 +56,79 @@ const options = {
     type: 'object',
     required: false,
     description:
-      'Can be used to add an error message to the text input component. The error message component will not display if you use a falsy value for `errorMessage`, for example `false` or `null`.',
+      'Can be used to add an error message to the search input component. The error message component will not display if you use a falsy value for `errorMessage`, for example `false` or `null`.',
     released: '10.5.0',
     isComponent: true
+  },
+  prefix: {
+    type: 'object',
+    required: false,
+    description: 'Can be used to add a prefix to the search input component.',
+    released: '10.5.0',
+    params: {
+      text: {
+        type: 'string',
+        required: true,
+        description:
+          'Required. If `html` is set, this is not required. Text to use within the prefix. If `html` is provided, the `text` option will be ignored.',
+        released: '10.5.0'
+      },
+      html: {
+        type: 'string',
+        required: true,
+        description:
+          'Required. If `text` is set, this is not required. HTML to use within the prefix. If `html` is provided, the `text` option will be ignored.',
+        released: '10.5.0'
+      },
+      classes: {
+        type: 'string',
+        required: false,
+        description: 'Classes to add to the prefix.',
+        released: '10.5.0'
+      },
+      attributes: {
+        type: 'object',
+        required: false,
+        description:
+          'HTML attributes (for example data attributes) to add to the prefix element.',
+        released: '10.5.0'
+      }
+    }
+  },
+  suffix: {
+    type: 'object',
+    required: false,
+    description: 'Can be used to add a suffix to the search input component.',
+    released: '10.5.0',
+    params: {
+      text: {
+        type: 'string',
+        required: true,
+        description:
+          'If `html` is set, this is not required. Text to use within the suffix. If `html` is provided, the `text` option will be ignored.',
+        released: '10.5.0'
+      },
+      html: {
+        type: 'string',
+        required: true,
+        description:
+          'If `text` is set, this is not required. HTML to use within the suffix. If `html` is provided, the `text` option will be ignored.',
+        released: '10.5.0'
+      },
+      classes: {
+        type: 'string',
+        required: false,
+        description: 'Classes to add to the suffix element.',
+        released: '10.5.0'
+      },
+      attributes: {
+        type: 'object',
+        required: false,
+        description:
+          'HTML attributes (for example data attributes) to add to the suffix element.',
+        released: '10.5.0'
+      }
+    }
   },
   code: {
     type: 'boolean',
@@ -84,7 +154,7 @@ const options = {
     type: 'object',
     required: false,
     description:
-      'Additional options for the form group containing the text input component.',
+      'Additional options for the form group containing the search input component.',
     released: '10.5.0',
     params: {
       classes: {
@@ -105,7 +175,7 @@ const options = {
         type: 'object',
         required: false,
         description:
-          'Content to add before the input used by the text input component.',
+          'Content to add before the input used by the search input component.',
         released: '10.5.0',
         params: {
           text: {
@@ -128,7 +198,7 @@ const options = {
         type: 'object',
         required: false,
         description:
-          'Content to add after the input used by the text input component.',
+          'Content to add after the input used by the search input component.',
         released: '10.5.0',
         params: {
           text: {
@@ -169,6 +239,28 @@ const options = {
       'Attribute to provide a regular expression pattern, used to match allowed character combinations for the input value.',
     released: '10.5.0'
   },
+  inputWrapper: {
+    type: 'object',
+    required: false,
+    description:
+      'Additional options for the wrapping element containing the search input component.',
+    released: '10.5.0',
+    params: {
+      classes: {
+        type: 'string',
+        required: false,
+        description: 'Classes to add to the wrapping element.',
+        released: '10.5.0'
+      },
+      attributes: {
+        type: 'object',
+        required: false,
+        description:
+          'HTML attributes (for example data attributes) to add to the wrapping element.',
+        released: '10.5.0'
+      }
+    }
+  },
   attributes: {
     type: 'object',
     required: false,
@@ -181,6 +273,7 @@ const options = {
     required: false,
     description: 'Optional object allowing customisation of the search button.',
     released: '10.5.0',
+    isComponent: true,
     params: {
       variant: {
         type: 'string',

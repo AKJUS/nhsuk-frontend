@@ -5,14 +5,11 @@
 {#- Set classes for this component #}
 {%- set classNames = "nhsuk-search-input" -%}
 {%- set classNamesInput = "nhsuk-search-input__input" -%}
+{%- set classNamesInputWrapper = "nhsuk-search-input__wrapper" -%}
 {%- set classNamesButton = "nhsuk-search-input__button" -%}
 
 {%- if params.large and (not params.classes or not "nhsuk-search-input--large" in params.classes) %}
   {% set classNames = classNames ~ " nhsuk-search-input--large" %}
-{% endif %}
-
-{%- if params.formGroup.classes %}
-  {% set classNames = classNames ~ " " ~ params.formGroup.classes %}
 {% endif %}
 
 {%- if params.classes %}
@@ -21,6 +18,14 @@
 
 {%- if params.button.classes %}
   {% set classNamesButton = classNamesButton ~ " " ~ params.button.classes %}
+{% endif %}
+
+{%- if params.inputWrapper.classes %}
+  {% set classNamesInputWrapper = classNamesInputWrapper ~ " " ~ params.inputWrapper.classes %}
+{% endif %}
+
+{%- if params.formGroup.classes %}
+  {% set classNames = classNames ~ " " ~ params.formGroup.classes %}
 {% endif %}
 
 {%- set id = params.id if params.id else params.name -%}
@@ -53,7 +58,8 @@
     }
   },
   inputWrapper: {
-    classes: "nhsuk-search-input__wrapper"
+    classes: classNamesInputWrapper,
+    attributes: params.inputWrapper.attributes
   },
   label: params.label,
   hint: params.hint,
@@ -62,8 +68,10 @@
   errorMessage: params.errorMessage,
   id: id,
   name: params.name,
-  code: params.code,
   value: params.value,
+  prefix: params.prefix,
+  suffix: params.suffix,
+  code: params.code,
   width: params.width,
   type: params.type | default("search"),
   inputmode: params.inputmode,

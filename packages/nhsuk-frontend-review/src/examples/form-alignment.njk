@@ -126,6 +126,61 @@
       <form method="post" novalidate>
         {% call fieldset({
           legend: {
+            text: "Search input with prefix",
+            size: "m"
+          }
+        }) %}
+          {{ searchInput({
+            label: {
+              text: "Code lookup",
+              classes: "nhsuk-u-visually-hidden"
+            },
+            prefix: {
+              text: "SNOMED"
+            },
+            placeholder: "Code",
+            id: "example-search-6",
+            name: "example-search-6",
+            value: "160245001",
+            code: true,
+            classes: "nhsuk-u-width-full",
+            button: {
+              icon: "arrow-right",
+              variant: "brand"
+            },
+            formGroup: {
+              classes: "nhsuk-u-width-one-half"
+            }
+          }) }}
+
+          {{ searchInput({
+            label: {
+              text: "Code lookup",
+              classes: "nhsuk-u-visually-hidden"
+            },
+            prefix: {
+              text: "ATC"
+            },
+            placeholder: "Code",
+            id: "example-search-7",
+            name: "example-search-7",
+            value: "A02BC01",
+            code: true,
+            classes: "nhsuk-u-width-full",
+            button: {
+              icon: "arrow-right",
+              variant: "brand"
+            },
+            formGroup: {
+              classes: "nhsuk-u-width-one-half"
+            }
+          }) }}
+        {% endcall %}
+      </form>
+
+      <form method="post" novalidate>
+        {% call fieldset({
+          legend: {
             text: "Input and icon button",
             size: "m"
           }
