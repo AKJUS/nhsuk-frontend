@@ -148,6 +148,38 @@ If you use Sass and you've changed the default `/assets/` public path (for examp
 
 This was added in [pull request #1915: Render Nunjucks icon macro into SVG files](https://github.com/nhsuk/nhsuk-frontend/pull/1915).
 
+#### Add a modifier class for inline checkboxes
+
+We've added a new `.nhsuk-checkboxes--inline` class and `inline` Nunjucks option for the [checkboxes](https://service-manual.nhs.uk/design-system/components/header) component.
+
+If there are only 2 short options, you can use this to display the checkboxes horizontally (inline). On small screens such as mobile devices, the checkboxes will still stack vertically.
+
+For example:
+
+```patch
+  {{ checkboxes({
+    fieldset: {
+      legend: {
+        text: "Which nipple has changed?"
+      }
+    },
+    name: "area",
++   inline: true,
+    items: [
+      {
+        value: "right",
+        text: "Right nipple"
+      },
+      {
+        value: "left",
+        text: "Left nipple"
+      }
+    ]
+  }) }}
+```
+
+This was added in [pull request #1937: Add a modifier class for inline checkboxes](https://github.com/nhsuk/nhsuk-frontend/pull/1937).
+
 #### Add a template with all components imported
 
 If you are using our Nunjucks [page template](https://service-manual.nhs.uk/design-system/styles/page-template), you can now extend `template-with-imports.njk` instead of `template.njk` to automatically import all components.
