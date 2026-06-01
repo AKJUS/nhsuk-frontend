@@ -323,7 +323,7 @@ This was added in [pull request #1937: Add a modifier class for inline checkboxe
 
 If you are using our Nunjucks [page template](https://service-manual.nhs.uk/design-system/styles/page-template), you can now extend `template-with-imports.njk` instead of `template.njk` to automatically import all components.
 
-This was was added in [pull request #1921: Add a template with all components imported](https://github.com/nhsuk/nhsuk-frontend/pull/1921).
+This was added in [pull request #1921: Add a template with all components imported](https://github.com/nhsuk/nhsuk-frontend/pull/1921).
 
 ### :wastebasket: **Deprecated features**
 
