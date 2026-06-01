@@ -174,6 +174,9 @@ export default defineConfig([
         }
       ],
 
+      // Allow examples to contain unused expressions
+      '@typescript-eslint/no-unused-expressions': 'off',
+
       // Check type support for template string implicit `.toString()`
       '@typescript-eslint/restrict-template-expressions': [
         'error',

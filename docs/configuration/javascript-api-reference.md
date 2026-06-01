@@ -71,6 +71,43 @@ Default:
 'length'
 ```
 
+### countFunction
+
+Type: function
+
+The count function used to count the text. Returns the count as a number.
+
+Default:
+
+```mjs
+CharacterCount.countFunctions.length
+```
+
+Count functions are called with:
+
+- `text` (string) - Textarea value
+- `context` (object) - Character count context
+
+```mjs
+(text, context) => {
+  return text.length
+}
+```
+
+Character count `context` objects contain the following properties:
+
+- `$textarea` - Textarea HTML element
+- `config` - Character count config
+- `segmenter` - Character count `Intl.Segmenter` (optional)
+
+Our built in count functions are available to call or extend via:
+
+```mjs
+CharacterCount.countFunctions.length
+CharacterCount.countFunctions.characters
+CharacterCount.countFunctions.words
+```
+
 ### textareaDescriptionClass
 
 Type: string

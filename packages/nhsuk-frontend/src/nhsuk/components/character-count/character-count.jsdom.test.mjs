@@ -133,6 +133,18 @@ describe('Character count', () => {
       )
     })
 
+    it('should not throw without Intl.Segmenter support when count function is provided', () => {
+      // @ts-expect-error The operand of a 'delete' operator cannot be a read-only property
+      delete Intl.Segmenter
+
+      expect(() => {
+        new CharacterCount($root, {
+          countType: 'characters',
+          countFunction: jest.fn()
+        })
+      }).not.toThrow()
+    })
+
     it('should throw with missing $root element', () => {
       // @ts-expect-error Parameter '$root' not provided
       expect(() => new CharacterCount()).toThrow(
@@ -439,7 +451,11 @@ describe('Character count', () => {
         await user.keyboard('Newly updated value')
 
         expect(component.config.countFunction).toHaveBeenLastCalledWith(
-          'Newly updated value'
+          'Newly updated value',
+          {
+            config: component.config,
+            segmenter: component.segmenter
+          }
         )
 
         expect(component.getCountMessage()).toBe(
@@ -457,7 +473,11 @@ describe('Character count', () => {
         await user.keyboard('Newly updated value')
 
         expect(component.config.countFunction).toHaveBeenLastCalledWith(
-          'Newly updated value'
+          'Newly updated value',
+          {
+            config: component.config,
+            segmenter: component.segmenter
+          }
         )
 
         expect(component.getCountMessage()).toBe('You have 90 words remaining')

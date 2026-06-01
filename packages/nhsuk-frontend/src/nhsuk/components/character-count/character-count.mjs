@@ -61,6 +61,7 @@ export class CharacterCount extends ConfigurableComponent {
     const {
       i18n,
       maxlength,
+      maxwords,
       countFunction,
       countType,
       screenReaderCountMessageClass,
@@ -73,8 +74,20 @@ export class CharacterCount extends ConfigurableComponent {
       locale: closestAttributeValue(this.$root, 'lang')
     })
 
-    if (countType === 'characters' || !!countFunction) {
-      if (!('Segmenter' in Intl)) {
+    if (
+      countType === 'characters' ||
+      (countType === 'words' && maxwords === undefined) ||
+      countFunction
+    ) {
+      if ('Segmenter' in Intl) {
+        this.segmenter = new Intl.Segmenter(this.i18n.locale, {
+          granularity: countType === 'words' ? 'word' : 'grapheme'
+        })
+      }
+
+      // Suppress support error if a custom count function is provided, since
+      // users may provide their own fallback without needing Intl.Segmenter
+      if (!this.segmenter && !countFunction) {
         throw new SupportError(
           formatErrorMessage(
             CharacterCount,
@@ -82,11 +95,17 @@ export class CharacterCount extends ConfigurableComponent {
           )
         )
       }
-
-      this.segmenter = new Intl.Segmenter(this.i18n.locale, {
-        granularity: countType === 'words' ? 'word' : 'grapheme'
-      })
     }
+
+    // Determine the count function to use
+    this.countFunction =
+      countFunction ?? CharacterCount.countFunctions[countType]
+
+    // Cache the count function context
+    this.countFunctionContext = /** @type {CharacterCountContext} */ ({
+      config: this.config,
+      segmenter: this.segmenter
+    })
 
     // Determine the limit attribute (characters or words)
     this.maxLength = maxlength ?? Infinity
@@ -221,12 +240,11 @@ export class CharacterCount extends ConfigurableComponent {
    * @param {string} [text] - Deprecated
    */
   updateCount(text) {
-    const { $textarea, countFunctions } = this
-    let { countType, countFunction } = this.config
-
-    text ??= $textarea.value
-    countFunction ??= countFunctions[countType]
-    this.length = countFunction.call(this, text)
+    this.length = this.countFunction.call(
+      this,
+      text ?? this.$textarea.value,
+      this.countFunctionContext
+    )
   }
 
   /**
@@ -346,7 +364,7 @@ export class CharacterCount extends ConfigurableComponent {
    * and how many remain
    *
    * @param {number} remainingNumber - The number of words/characters remaining
-   * @param {string} [countType] - Deprecated
+   * @param {CharacterCountConfig['countType']} [countType] - Deprecated
    * @returns {string} Status message
    */
   formatCountMessage(remainingNumber, countType) {
@@ -453,9 +471,9 @@ export class CharacterCount extends ConfigurableComponent {
    * Character count functions
    *
    * @constant
-   * @satisfies {Record<string, CharacterCountConfig['countFunction']>}
+   * @satisfies {Record<string, CharacterCountFunction>}
    */
-  countFunctions = Object.freeze({
+  static countFunctions = Object.freeze({
     /**
      * Count code points (string length)
      *
@@ -470,22 +488,36 @@ export class CharacterCount extends ConfigurableComponent {
      * Count grapheme clusters (user-perceived characters)
      *
      * @param {string} text - Textarea value
+     * @param {CharacterCountContext} context - Object containing the config and segmenter
      * @returns {number} Count
      */
-    characters(text) {
-      return this.segmenter
-        ? Array.from(this.segmenter.segment(text)).length
+    characters(text, context) {
+      return context.segmenter
+        ? Array.from(context.segmenter.segment(text)).length
         : 0
     },
 
     /**
-     * Count consecutive non-whitespace results
+     * Count words
+     *
+     * If the (deprecated) `maxwords` option is set, count words between
+     * consecutive whitespace rather than using the segmenter
      *
      * @param {string} text - Textarea value
+     * @param {CharacterCountContext} context - Object containing the config and segmenter
      * @returns {number} Count
      */
-    words(text) {
-      return text.match(/\S+/g)?.length ?? 0
+    words(text, context) {
+      if (context.config.maxwords !== undefined) {
+        return text.split(/\s+/g).filter(Boolean).length
+      }
+
+      const segments = context.segmenter
+        ? Array.from(context.segmenter.segment(text))
+        : []
+
+      // Filter out punctuation and whitespace, leaving only words
+      return segments.filter((segment) => segment.isWordLike).length
     }
   })
 
@@ -590,8 +622,8 @@ export function initCharacterCounts(options) {
  * @typedef {object} CharacterCountConfig
  * @property {number} [maxlength] - The maximum number of characters (or words
  *   if `countType` is set to `"words"`).
- * @property {number} [maxwords] - Deprecated. Use `maxlength` with `countType`
- *   set to `"words"` instead.
+ * @property {number} [maxwords] - Deprecated. Use `maxlength` with
+ *   `countType: "words"` instead.
  * @property {number} [threshold=0] - The percentage value of the limit at
  *   which point the count message is displayed. If this attribute is set, the
  *   count message will be hidden by default.
@@ -608,7 +640,18 @@ export function initCharacterCounts(options) {
 /**
  * Character count function
  *
- * @typedef {(this: CharacterCount, text: string) => number} CharacterCountFunction
+ * @callback CharacterCountFunction
+ * @param {string} text - Textarea value
+ * @param {CharacterCountContext} context - Object containing the config and segmenter
+ * @returns {number} Count
+ */
+
+/**
+ * Character count context
+ *
+ * @typedef {object} CharacterCountContext
+ * @property {CharacterCountConfig} config - Character count config
+ * @property {CharacterCount['segmenter']} segmenter - Character count segmenter
  */
 
 /**
@@ -650,9 +693,9 @@ export function initCharacterCounts(options) {
  * @property {TranslationPluralForms} [textareaDescription] - Message made
  *   available to assistive technologies, if none is already present in the
  *   HTML, to describe that the component accepts only a limited amount of
- *   content. It is visible on the page when JavaScript is unavailable. The
- *   component will replace the `%{count}` placeholder with the value of the
- *   `maxlength` parameter.
+ *   content. It is visible on the page if `countType` is not supported or
+ *   JavaScript is unavailable. The component will replace the `%{count}`
+ *   placeholder with the value of the `maxlength` parameter.
  */
 
 /**
