@@ -402,6 +402,7 @@ This change was introduced in [pull request #1712: Add support for icon buttons]
 - [#1904: Make sure Nunjucks text-only options for card heading, label and legend are escaped](https://github.com/nhsuk/nhsuk-frontend/pull/1904)
 - [#1925: Increase text input prefix/suffix spacing](https://github.com/nhsuk/nhsuk-frontend/pull/1925)
 - [#1934: Adjust small checkboxes and radios spacing](https://github.com/nhsuk/nhsuk-frontend/pull/1934)
+- [#1935: Prevent empty error message being rendered](https://github.com/nhsuk/nhsuk-frontend/pull/1935)
 
 ## 10.4.2 - 25 March 2026
 
