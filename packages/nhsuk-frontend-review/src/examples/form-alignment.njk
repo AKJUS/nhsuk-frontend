@@ -540,6 +540,30 @@
               ]
             }) }}
           </div>
+          <div class="nhsuk-form-group nhsuk-form-group--inline">
+            {{ input({
+              label: {
+                text: "Keywords"
+              },
+              id: "keywords-checkboxes-small",
+              name: "keywords-checkboxes-small",
+              formGroup: {
+                classes: "nhsuk-u-width-one-third"
+              }
+            }) }}
+
+            {{ checkboxes({
+              idPrefix: "checkboxes-small",
+              name: "checkboxes-small",
+              small: true,
+              items: [
+                {
+                  text: "Show archived",
+                  value: "archived"
+                }
+              ]
+            }) }}
+          </div>
         {% endcall %}
       </form>
 
@@ -573,6 +597,30 @@
               ]
             }) }}
           </div>
+          <div class="nhsuk-form-group nhsuk-form-group--inline">
+            {{ input({
+              label: {
+                text: "Keywords"
+              },
+              id: "keywords-radios-small",
+              name: "keywords-radios-small",
+              formGroup: {
+                classes: "nhsuk-u-width-one-third"
+              }
+            }) }}
+
+            {{ radios({
+              idPrefix: "radios-small",
+              name: "radios-small",
+              small: true,
+              items: [
+                {
+                  text: "Not applicable",
+                  value: "na"
+                }
+              ]
+            }) }}
+          </div>
         {% endcall %}
       </form>
 
@@ -598,6 +646,31 @@
             {{ radios({
               idPrefix: "radios-group",
               name: "radios-group",
+              items: [
+                {
+                  text: "Not applicable",
+                  value: "na"
+                }
+              ]
+            }) }}
+          </div>
+          <div class="nhsuk-form-group nhsuk-form-group--inline">
+            {{ checkboxes({
+              idPrefix: "checkboxes-group-small",
+              name: "checkboxes-group-small",
+              small: true,
+              items: [
+                {
+                  text: "Show archived",
+                  value: "archived"
+                }
+              ]
+            }) }}
+
+            {{ radios({
+              idPrefix: "radios-group-small",
+              name: "radios-group-small",
+              small: true,
               items: [
                 {
                   text: "Not applicable",
