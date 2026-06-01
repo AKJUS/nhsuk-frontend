@@ -33,8 +33,9 @@ export async function load(component) {
   const examples = Object.fromEntries(
     Object.entries(fixtures.examples).sort(([nameA], [nameB]) => {
       for (const [find, replace] of /** @type {const} */ ([
-        // Sort default to top
-        ['default', '!!!'],
+        // Sort default and disabled to top
+        ['default', '!!!A'],
+        ['disabled', '!!!B'],
 
         // Sort do before don't
         ['(do)', '1 do-dont'],
