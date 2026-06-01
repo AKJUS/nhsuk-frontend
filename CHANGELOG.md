@@ -26,6 +26,111 @@ If you are not using Nunjucks macros, use the HTML markup from the [search input
 
 This change was introduced in [pull request #1660: Add search input component](https://github.com/nhsuk/nhsuk-frontend/pull/1660).
 
+#### Improved character count counting
+
+We've added a new `countType` option to the character count component to enable [improved counting with `Intl.Segmenter`](https://developer.mozilla.org/en-US/blog/javascript-intl-segmenter-i18n/).
+
+This feature was introduced because [JavaScript counts `String: length` in code units](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/length) not characters, for example:
+
+| String | Length | Remarks                                                                    |
+| ------ | ------ | -------------------------------------------------------------------------- |
+| cafȩ́   | 5      | The character `ȩ́` counted as 2 code units                                  |
+| cafȩ́   | 5      | The character `ȩ` with combining mark ` ́` counted as 2 code units          |
+| cafȩ́   | 6      | The character `e` with combining marks ` ́` and ` ̧` counted as 3 code units |
+| 😹     | 2      | The cat emoji counted as 2 code units                                      |
+| 👩🏻‍🚀     | 7      | The astronaut emoji with gender and skin modifiers counted as 7 code units |
+
+Similarly when counting words, "my mother-in-law" is now counted as 4 (not 2) words to correctly follow the [Unicode **Default Word Boundary Specification**](https://unicode.org/reports/tr29/#Default_Word_Boundaries).
+
+To enable improved counting in [supported browsers](https://caniuse.com/wf-intl-segmenter) you should either:
+
+- add `countType: "characters"` to count user-perceived characters
+- add `countType: "words"` to count words between word boundaries
+
+Unsupported browsers will default to the `textareaDescriptionText` message shown when JavaScript is unavailable, such as:
+
+> You can enter up to 350 characters
+
+When using Nunjucks to count characters:
+
+```patch
+  {{ characterCount({
+    label: {
+      text: "Can you provide more detail?",
+      size: "l",
+      isPageHeading: true
+    },
+    name: "more-detail",
+-   maxlength: 350
++   maxlength: 350,
++   countType: "characters"
+  }) }}
+```
+
+Or when using Nunjucks to count words:
+
+```patch
+  {{ characterCount({
+    label: {
+      text: "Can you provide more detail?",
+      size: "l",
+      isPageHeading: true
+    },
+    name: "more-detail",
+-   maxwords: 150
++   maxlength: 150,
++   countType: "words"
+  }) }}
+```
+
+Note: [The character count `maxwords` option and word counting behaviour are deprecated](#rename-the-character-count-maxwords-option) and will be removed in a future release. You must replace `maxwords` with `maxlength` when using `countType: "words"`.
+
+This was added in pull requests [#1892: Refactor character count method to reduce repeated updates](https://github.com/nhsuk/nhsuk-frontend/pull/1892), [#1893: Deprecate character count `maxwords` and add `countType` option](https://github.com/nhsuk/nhsuk-frontend/pull/1893), [#1895: Add character count `countType: "characters"` option using Intl.Segmenter](https://github.com/nhsuk/nhsuk-frontend/pull/1895) and [#1899: Add character count `countType: "words"` option using Intl.Segmenter](https://github.com/nhsuk/nhsuk-frontend/pull/1899).
+
+#### Custom character count functions
+
+We've added a new `countFunction` option to the character count component.
+
+Service teams can now cater for server-side differences in:
+
+- New lines that vary due to `\n` versus `\r\n`
+- Word counts that vary based on empty space and punctuation
+- How empty space is trimmed before counting
+- Support for multi-byte strings
+
+For example, services might already count multi-byte strings server-side (e.g. [`len()` in Python](https://docs.python.org/3.9/library/functions.html?highlight=len#len)) resulting in client-side count mismatches, yet [support for improved character count counting](#improved-character-count-counting) may be blocked by a [3rd party library integration](https://grapheme.readthedocs.io/en/latest/grapheme.html).
+
+Custom count functions are called with:
+
+- `text` (string) - Textarea value
+- `context` (object) - Character count context
+
+```mjs
+new CharacterCount($root, {
+  maxlength: 350,
+  countType: 'characters',
+  countFunction(text, context) {
+    return text.length
+  }
+})
+```
+
+Character count `context` objects contain the following properties:
+
+- `$textarea` - Textarea HTML element
+- `config` - Character count config
+- `segmenter` - Character count `Intl.Segmenter` (optional)
+
+Our built in count functions are available to call or extend via:
+
+```mjs
+CharacterCount.countFunctions.length
+CharacterCount.countFunctions.characters
+CharacterCount.countFunctions.words
+```
+
+This was added in [pull request #1897: Add character count `countFunction` option](https://github.com/nhsuk/nhsuk-frontend/pull/1897).
+
 #### Add date input `day`, `month` and `year` Nunjucks options
 
 We've updated the date input component to add individual `day`, `month` and `year` Nunjucks options.
@@ -219,6 +324,42 @@ This was added in [pull request #1937: Add a modifier class for inline checkboxe
 If you are using our Nunjucks [page template](https://service-manual.nhs.uk/design-system/styles/page-template), you can now extend `template-with-imports.njk` instead of `template.njk` to automatically import all components.
 
 This was was added in [pull request #1921: Add a template with all components imported](https://github.com/nhsuk/nhsuk-frontend/pull/1921).
+
+### :wastebasket: **Deprecated features**
+
+#### Rename the character count `maxwords` option
+
+To support improved word counting using the browser [`Intl.Segmenter` API](https://developer.mozilla.org/en-US/blog/javascript-intl-segmenter-i18n/), you should replace the character count `maxwords` option with `maxlength` and set `countType: "words"`.
+
+For example, using Nunjucks:
+
+```patch
+  {{ characterCount({
+    label: {
+      text: "Can you provide more detail?",
+      size: "l",
+      isPageHeading: true
+    },
+    name: "more-detail",
+-   maxwords: 150
++   maxlength: 150,
++   countType: "words"
+  }) }}
+```
+
+Or when using the JavaScript API:
+
+```patch
+  new CharacterCount($root, {
+-   maxwords: 150
++   maxlength: 150,
++   countType: 'words'
+  })
+```
+
+The previous `maxwords` option and word counting behaviour are deprecated and will be removed in a future release.
+
+This was added in pull requests [#1893: Deprecate character count `maxwords` and add `countType` option](https://github.com/nhsuk/nhsuk-frontend/pull/1893) and [#1899: Add character count `countType: "words"` option using Intl.Segmenter](https://github.com/nhsuk/nhsuk-frontend/pull/1899).
 
 ### :recycle: **Changes**
 
