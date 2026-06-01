@@ -25,16 +25,21 @@ export async function load(component) {
   const { name, params } = await import(optionsPath)
 
   // Import examples (optional) with fallback
-  const fixtures = await import(fixturesPath).catch(() => {
-    return { examples: {} }
+  const fixtures = await import(fixturesPath).catch((error) => {
+    if ('code' in error && error.code === 'ERR_MODULE_NOT_FOUND') {
+      return { examples: {} }
+    }
+
+    throw error
   })
 
   // Sort examples by name, default at top
   const examples = Object.fromEntries(
     Object.entries(fixtures.examples).sort(([nameA], [nameB]) => {
       for (const [find, replace] of /** @type {const} */ ([
-        // Sort default to top
-        ['default', '!!!'],
+        // Sort default and disabled to top
+        ['default', '!!!A'],
+        ['disabled', '!!!B'],
 
         // Sort do before don't
         ['(do)', '1 do-dont'],

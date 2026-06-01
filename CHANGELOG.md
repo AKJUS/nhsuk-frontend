@@ -26,7 +26,7 @@ If you are not using Nunjucks macros, use the HTML markup from the [search input
 
 This change was introduced in [pull request #1660: Add search input component](https://github.com/nhsuk/nhsuk-frontend/pull/1660).
 
-#### Add date input `day`, `month` and `year` options
+#### Add date input `day`, `month` and `year` Nunjucks options
 
 We've updated the date input component to add individual `day`, `month` and `year` Nunjucks options.
 
@@ -41,25 +41,29 @@ These new options can be used to partially override the defaults. For example, s
         isPageHeading: true
       }
     },
+    errorMessage: {
+      text: "Date of birth must include a year"
+    },
+    namePrefix: "dob",
+    values: data.dob,
 -   items: [
 -     {
--       name: "dob[day]",
+-       name: "day",
 -       label: "Day",
 -       width: 2
 -     },
 -     {
--       name: "dob[month]",
+-       name: "month",
 -       label: "Month",
 -       width: 2
 -     },
 -     {
--       name: "dob[year]",
+-       name: "year",
 -       label: "Year",
 -       width: 4,
 -       error: true
 -     }
 -   ]
-+   namePrefix: "dob",
 +   year: {
 +     error: true
 +   }
@@ -67,6 +71,36 @@ These new options can be used to partially override the defaults. For example, s
 ```
 
 This was added in [pull request #1869: Add date input `day`, `month` and `year` options](https://github.com/nhsuk/nhsuk-frontend/pull/1869).
+
+#### Updated Nunjucks macro options for components
+
+For consistency with other components, we’ve added new Nunjucks macro options:
+
+- Character count `autocomplete` option
+- Checkboxes and radios `formGroup.classes` option
+- Date input and password input `inputWrapper` option
+- Password input `code`, `prefix` and `suffix` options
+- Password input button `variant` option
+- Radios `formGroup.classes` option
+
+Visit the [design system in the NHS digital service manual](https://service-manual.nhs.uk/design-system/components) to see Nunjucks options for each component.
+
+This was added in [pull request #1916: Add disabled component examples and review Nunjucks options](https://github.com/nhsuk/nhsuk-frontend/pull/1916).
+
+#### Added a top-level `disabled` Nunjucks option to more form controls
+
+We’ve updated more components to include a top-level `disabled` Nunjucks option. This will make it easier to set the disabled state for these form controls.
+
+- Character count `disabled` option
+- Checkboxes and radios `disabled` option
+- Date input `disabled` option
+- Password input `disabled` option
+
+Disabled form controls have poor contrast and can confuse some users, so avoid them if possible.
+
+Only use disabled form controls if research shows it makes the user interface easier to understand.
+
+This was added in [pull request #1916: Add disabled component examples and review Nunjucks options](https://github.com/nhsuk/nhsuk-frontend/pull/1916).
 
 #### Add icons to buttons
 
