@@ -408,6 +408,32 @@ We've changed the border colour shown to the left of details component and condi
 
 This change was introduced in [pull request #1788: Change border colour for details component and conditionally revealed content](https://github.com/nhsuk/nhsuk-frontend/pull/1788).
 
+#### Update search and tick icon SVG paths
+
+SVG paths for the search and tick icons have been updated for improved vertical alignment. You do not need to do anything if you're using Nunjucks macros.
+
+If you are not using Nunjucks macros, update your SVG paths using the [icon examples in the NHS digital service manual](https://service-manual.nhs.uk/design-system/styles/icons) as shown below.
+
+To update the search icon:
+
+```patch
+  <svg class="nhsuk-icon nhsuk-icon--search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" focusable="false" aria-hidden="true">
+-   <path d="m20.7 19.3-4.1-4.1a7 7 0 1 0-1.4 1.4l4 4.1a1 1 0 0 0 1.5 0c.4-.4.4-1 0-1.4ZM6 11a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z"/>
++   <path d="m20.7 18.9-4.1-4.1a7 7 0 1 0-1.4 1.4l4 4.1a1 1 0 0 0 1.5 0c.4-.4.4-1 0-1.4ZM6 10.6a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z"/>
+  </svg>
+```
+
+To update the tick icon:
+
+```patch
+  <svg class="nhsuk-icon nhsuk-icon--tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" focusable="false" aria-hidden="true">
+-   <path d="M11.4 18.8a2 2 0 0 1-2.7.1h-.1L4 14.1a1.5 1.5 0 0 1 2.1-2L10 16l8.1-8.1a1.5 1.5 0 1 1 2.2 2l-8.9 9Z"/>
++   <path d="M11.4 17.5a2 2 0 0 1-2.7.1h-.1L4 12.8a1.5 1.5 0 0 1 2.1-2L10 14.7l8.1-8.1a1.5 1.5 0 1 1 2.2 2l-8.9 9Z"/>
+  </svg>
+```
+
+This change was introduced in [pull request #1951: Improve vertical alignment for search and tick SVG icon paths](https://github.com/nhsuk/nhsuk-frontend/pull/1951).
+
 #### Improve screen reader announcements for header search button
 
 We've updated the HTML for the header search button to improve NVDA screen reader announcements.
@@ -418,7 +444,7 @@ If you are not using Nunjucks macros, update your HTML markup using the [header 
 - remove the `aria-label="Search"` and `role="img"` attributes from the `<svg>` icon
 - remove the `<title>Search</title>` child element from the `<svg>` icon
 - add the `aria-hidden="true"` attribute to the `<svg>` icon
-- update the search icon SVG path (if not already)
+- update the search icon SVG path (if not done already)
 
 ```patch
 - <button class="nhsuk-button nhsuk-button--small" data-module="nhsuk-button" type="submit">
