@@ -181,6 +181,8 @@ This was added in [pull request #1869: Add date input `day`, `month` and `year` 
 
 For consistency with other components, we’ve added new Nunjucks macro options:
 
+- Action link `element` and `type` options
+- Back link `type` option
 - Character count `autocomplete` option
 - Checkboxes and radios `formGroup.classes` option
 - Date input and password input `inputWrapper` option
@@ -190,7 +192,7 @@ For consistency with other components, we’ve added new Nunjucks macro options:
 
 Visit the [design system in the NHS digital service manual](https://service-manual.nhs.uk/design-system/components) to see Nunjucks options for each component.
 
-This was added in [pull request #1916: Add disabled component examples and review Nunjucks options](https://github.com/nhsuk/nhsuk-frontend/pull/1916).
+This was added in pull requests [#1916: Add disabled component examples and review Nunjucks options](https://github.com/nhsuk/nhsuk-frontend/pull/1916) and [#1946: Updates to link classes and mixins, support for action link as a button](https://github.com/nhsuk/nhsuk-frontend/pull/1946).
 
 #### Added a top-level `disabled` Nunjucks option to more form controls
 
