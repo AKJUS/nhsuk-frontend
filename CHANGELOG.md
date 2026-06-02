@@ -361,6 +361,14 @@ The previous `maxwords` option and word counting behaviour are deprecated and wi
 
 This was added in pull requests [#1893: Deprecate character count `maxwords` and add `countType` option](https://github.com/nhsuk/nhsuk-frontend/pull/1893) and [#1899: Add character count `countType: "words"` option using Intl.Segmenter](https://github.com/nhsuk/nhsuk-frontend/pull/1899).
 
+#### Rename Sass mixin for white link style
+
+If you use the Sass `nhsuk-link-style-white` mixin, you should rename it to `nhsuk-link-style-reverse`.
+
+The previous name is deprecated and will be removed in a future release.
+
+This change was introduced in [pull request #1946: Updates to link classes and mixins, support for action link as a button](https://github.com/nhsuk/nhsuk-frontend/pull/1946).
+
 ### :recycle: **Changes**
 
 #### Change border colour for details component and conditionally revealed content
