@@ -2,6 +2,27 @@
 
 {% set pageName = "Buttons" %}
 
+{% set examples = [
+  { name: "Arrow left", modifier: "arrow-left" },
+  { name: "Arrow right", modifier: "arrow-right" },
+  { name: "Arrow up", modifier: "arrow-up" },
+  { name: "Arrow down", modifier: "arrow-down" },
+  { name: "Arrow left circle", modifier: "arrow-left-circle" },
+  { name: "Arrow right circle", modifier: "arrow-right-circle" },
+  { name: "Arrow up circle", modifier: "arrow-up-circle" },
+  { name: "Arrow down circle", modifier: "arrow-down-circle" },
+  { name: "Chevron left circle", modifier: "chevron-left-circle" },
+  { name: "Chevron right circle", modifier: "chevron-right-circle" },
+  { name: "Chevron up circle", modifier: "chevron-up-circle" },
+  { name: "Chevron down circle", modifier: "chevron-down-circle" },
+  { name: "Cross", modifier: "cross" },
+  { name: "Tick", modifier: "tick" },
+  { name: "Minus", modifier: "minus" },
+  { name: "Plus", modifier: "plus" },
+  { name: "Search", modifier: "search" },
+  { name: "User", modifier: "user" }
+] %}
+
 {% block beforeContent %}
   {{ breadcrumb({
     items: [
@@ -214,393 +235,192 @@
         <div class="nhsuk-grid-column-one-third">
           <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
 
+          {% for row in examples | batch(4) %}
           <div class="nhsuk-button-group nhsuk-u-margin-bottom-0">
+            {% for item in row %}
             {{ button({
-              ariaLabel: "Left",
-              icon: "arrow-left",
+              ariaLabel: item.name,
+              icon: item.modifier,
               small: true
             }) }}
-
-            {{ button({
-              ariaLabel: "Right",
-              icon: "arrow-right",
-              small: true
-            }) }}
-
-            {{ button({
-              ariaLabel: "Up",
-              icon: "arrow-up",
-              small: true
-            }) }}
-
-            {{ button({
-              ariaLabel: "Down",
-              icon: "arrow-down",
-              small: true
-            }) }}
+            {% endfor %}
           </div>
+          {% endfor %}
 
+          <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible">
+
+          {% for row in examples | batch(4) %}
           <div class="nhsuk-button-group nhsuk-u-margin-bottom-0">
+            {% for item in row %}
             {{ button({
-              ariaLabel: "Left",
+              ariaLabel: item.name,
               variant: "warning",
-              icon: "arrow-left",
+              icon: item.modifier,
               small: true
             }) }}
-
-            {{ button({
-              ariaLabel: "Right",
-              variant: "warning",
-              icon: "arrow-right",
-              small: true
-            }) }}
-
-            {{ button({
-              ariaLabel: "Up",
-              variant: "warning",
-              icon: "arrow-up",
-              small: true
-            }) }}
-
-            {{ button({
-              ariaLabel: "Down",
-              variant: "warning",
-              icon: "arrow-down",
-              small: true
-            }) }}
+            {% endfor %}
           </div>
+          {% endfor %}
 
+          <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible">
+
+          {% for row in examples | batch(4) %}
           <div class="nhsuk-button-group nhsuk-u-margin-bottom-0">
+            {% for item in row %}
             {{ button({
-              ariaLabel: "Left",
+              ariaLabel: item.name,
               variant: "login",
-              icon: "arrow-left",
+              icon: item.modifier,
               small: true
             }) }}
-
-            {{ button({
-              ariaLabel: "Right",
-              variant: "login",
-              icon: "arrow-right",
-              small: true
-            }) }}
-
-            {{ button({
-              ariaLabel: "Up",
-              variant: "login",
-              icon: "arrow-up",
-              small: true
-            }) }}
-
-            {{ button({
-              ariaLabel: "Down",
-              variant: "login",
-              icon: "arrow-down",
-              small: true
-            }) }}
+            {% endfor %}
           </div>
+          {% endfor %}
 
+          <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible">
+
+          {% for row in examples | batch(4) %}
           <div class="nhsuk-button-group nhsuk-u-margin-bottom-0">
+            {% for item in row %}
             {{ button({
-              ariaLabel: "Left",
+              ariaLabel: item.name,
               variant: "secondary",
-              icon: "arrow-left",
+              icon: item.modifier,
               small: true
             }) }}
-
-            {{ button({
-              ariaLabel: "Right",
-              variant: "secondary",
-              icon: "arrow-right",
-              small: true
-            }) }}
-
-            {{ button({
-              ariaLabel: "Up",
-              variant: "secondary",
-              icon: "arrow-up",
-              small: true
-            }) }}
-
-            {{ button({
-              ariaLabel: "Down",
-              variant: "secondary",
-              icon: "arrow-down",
-              small: true
-            }) }}
+            {% endfor %}
           </div>
+          {% endfor %}
         </div>
 
         <div class="nhsuk-grid-column-one-third">
           <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
 
+          {% for row in examples | batch(4) %}
           <div class="nhsuk-button-group nhsuk-u-margin-bottom-0">
+            {% for item in row %}
             {{ button({
-              ariaLabel: "Left",
-              icon: "arrow-left",
+              ariaLabel: item.name,
+              icon: item.modifier,
               small: true,
               href: "#"
             }) }}
-
-            {{ button({
-              ariaLabel: "Right",
-              icon: "arrow-right",
-              small: true,
-              href: "#"
-            }) }}
-
-            {{ button({
-              ariaLabel: "Up",
-              icon: "arrow-up",
-              small: true,
-              href: "#"
-            }) }}
-
-            {{ button({
-              ariaLabel: "Down",
-              icon: "arrow-down",
-              small: true,
-              href: "#"
-            }) }}
+            {% endfor %}
           </div>
+          {% endfor %}
 
+          <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible">
+
+          {% for row in examples | batch(4) %}
           <div class="nhsuk-button-group nhsuk-u-margin-bottom-0">
+            {% for item in row %}
             {{ button({
-              ariaLabel: "Left",
+              ariaLabel: item.name,
               variant: "warning",
-              icon: "arrow-left",
+              icon: item.modifier,
               small: true,
               href: "#"
             }) }}
-
-            {{ button({
-              ariaLabel: "Right",
-              variant: "warning",
-              icon: "arrow-right",
-              small: true,
-              href: "#"
-            }) }}
-
-            {{ button({
-              ariaLabel: "Up",
-              variant: "warning",
-              icon: "arrow-up",
-              small: true,
-              href: "#"
-            }) }}
-
-            {{ button({
-              ariaLabel: "Down",
-              variant: "warning",
-              icon: "arrow-down",
-              small: true,
-              href: "#"
-            }) }}
+            {% endfor %}
           </div>
+          {% endfor %}
 
+          <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible">
+
+          {% for row in examples | batch(4) %}
           <div class="nhsuk-button-group nhsuk-u-margin-bottom-0">
+            {% for item in row %}
             {{ button({
-              ariaLabel: "Left",
+              ariaLabel: item.name,
               variant: "login",
-              icon: "arrow-left",
+              icon: item.modifier,
               small: true,
               href: "#"
             }) }}
-
-            {{ button({
-              ariaLabel: "Right",
-              variant: "login",
-              icon: "arrow-right",
-              small: true,
-              href: "#"
-            }) }}
-
-            {{ button({
-              ariaLabel: "Up",
-              variant: "login",
-              icon: "arrow-up",
-              small: true,
-              href: "#"
-            }) }}
-
-            {{ button({
-              ariaLabel: "Down",
-              variant: "login",
-              icon: "arrow-down",
-              small: true,
-              href: "#"
-            }) }}
+            {% endfor %}
           </div>
+          {% endfor %}
 
+          <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible">
+
+          {% for row in examples | batch(4) %}
           <div class="nhsuk-button-group nhsuk-u-margin-bottom-0">
+            {% for item in row %}
             {{ button({
-              ariaLabel: "Left",
+              ariaLabel: item.name,
               variant: "secondary",
-              icon: "arrow-left",
+              icon: item.modifier,
               small: true,
               href: "#"
             }) }}
-
-            {{ button({
-              ariaLabel: "Right",
-              variant: "secondary",
-              icon: "arrow-right",
-              small: true,
-              href: "#"
-            }) }}
-
-            {{ button({
-              ariaLabel: "Up",
-              variant: "secondary",
-              icon: "arrow-up",
-              small: true,
-              href: "#"
-            }) }}
-
-            {{ button({
-              ariaLabel: "Down",
-              variant: "secondary",
-              icon: "arrow-down",
-              small: true,
-              href: "#"
-            }) }}
+            {% endfor %}
           </div>
+          {% endfor %}
         </div>
 
         <div class="nhsuk-grid-column-one-third">
           <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
 
+          {% for row in examples | batch(4) %}
           <div class="nhsuk-button-group nhsuk-u-margin-bottom-0">
+            {% for item in row %}
             {{ button({
-              ariaLabel: "Left",
-              icon: "arrow-left",
+              ariaLabel: item.name,
+              icon: item.modifier,
               small: true,
               disabled: true
             }) }}
-
-            {{ button({
-              ariaLabel: "Right",
-              icon: "arrow-right",
-              small: true,
-              disabled: true
-            }) }}
-
-            {{ button({
-              ariaLabel: "Up",
-              icon: "arrow-up",
-              small: true,
-              disabled: true
-            }) }}
-
-            {{ button({
-              ariaLabel: "Down",
-              icon: "arrow-down",
-              small: true,
-              disabled: true
-            }) }}
+            {% endfor %}
           </div>
+          {% endfor %}
 
+          <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible">
+
+          {% for row in examples | batch(4) %}
           <div class="nhsuk-button-group nhsuk-u-margin-bottom-0">
+            {% for item in row %}
             {{ button({
-              ariaLabel: "Left",
+              ariaLabel: item.name,
               variant: "warning",
-              icon: "arrow-left",
+              icon: item.modifier,
               small: true,
               disabled: true
             }) }}
-
-            {{ button({
-              ariaLabel: "Right",
-              variant: "warning",
-              icon: "arrow-right",
-              small: true,
-              disabled: true
-            }) }}
-
-            {{ button({
-              ariaLabel: "Up",
-              variant: "warning",
-              icon: "arrow-up",
-              small: true,
-              disabled: true
-            }) }}
-
-            {{ button({
-              ariaLabel: "Down",
-              variant: "warning",
-              icon: "arrow-down",
-              small: true,
-              disabled: true
-            }) }}
+            {% endfor %}
           </div>
+          {% endfor %}
 
+          <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible">
+
+          {% for row in examples | batch(4) %}
           <div class="nhsuk-button-group nhsuk-u-margin-bottom-0">
+            {% for item in row %}
             {{ button({
-              ariaLabel: "Left",
+              ariaLabel: item.name,
               variant: "login",
-              icon: "arrow-left",
+              icon: item.modifier,
               small: true,
               disabled: true
             }) }}
-
-            {{ button({
-              ariaLabel: "Right",
-              variant: "login",
-              icon: "arrow-right",
-              small: true,
-              disabled: true
-            }) }}
-
-            {{ button({
-              ariaLabel: "Up",
-              variant: "login",
-              icon: "arrow-up",
-              small: true,
-              disabled: true
-            }) }}
-
-            {{ button({
-              ariaLabel: "Down",
-              variant: "login",
-              icon: "arrow-down",
-              small: true,
-              disabled: true
-            }) }}
+            {% endfor %}
           </div>
+          {% endfor %}
 
+          <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible">
+
+          {% for row in examples | batch(4) %}
           <div class="nhsuk-button-group nhsuk-u-margin-bottom-0">
+            {% for item in row %}
             {{ button({
-              ariaLabel: "Left",
+              ariaLabel: item.name,
               variant: "secondary",
-              icon: "arrow-left",
+              icon: item.modifier,
               small: true,
               disabled: true
             }) }}
-
-            {{ button({
-              ariaLabel: "Right",
-              variant: "secondary",
-              icon: "arrow-right",
-              small: true,
-              disabled: true
-            }) }}
-
-            {{ button({
-              ariaLabel: "Up",
-              variant: "secondary",
-              icon: "arrow-up",
-              small: true,
-              disabled: true
-            }) }}
-
-            {{ button({
-              ariaLabel: "Down",
-              variant: "secondary",
-              icon: "arrow-down",
-              small: true,
-              disabled: true
-            }) }}
+            {% endfor %}
           </div>
+          {% endfor %}
         </div>
       </div>
     </div>
@@ -801,393 +621,192 @@
         <div class="nhsuk-grid-column-one-third">
           <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
 
+          {% for row in examples | batch(4) %}
           <div class="nhsuk-button-group nhsuk-u-margin-bottom-0">
+            {% for item in row %}
             {{ button({
-              ariaLabel: "Left",
-              icon: "arrow-left",
+              ariaLabel: item.name,
+              icon: item.modifier,
               small: true
             }) }}
-
-            {{ button({
-              ariaLabel: "Right",
-              icon: "arrow-right",
-              small: true
-            }) }}
-
-            {{ button({
-              ariaLabel: "Up",
-              icon: "arrow-up",
-              small: true
-            }) }}
-
-            {{ button({
-              ariaLabel: "Down",
-              icon: "arrow-down",
-              small: true
-            }) }}
+            {% endfor %}
           </div>
+          {% endfor %}
 
+          <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible">
+
+          {% for row in examples | batch(4) %}
           <div class="nhsuk-button-group nhsuk-u-margin-bottom-0">
+            {% for item in row %}
             {{ button({
-              ariaLabel: "Left",
+              ariaLabel: item.name,
               variant: "warning",
-              icon: "arrow-left",
+              icon: item.modifier,
               small: true
             }) }}
-
-            {{ button({
-              ariaLabel: "Right",
-              variant: "warning",
-              icon: "arrow-right",
-              small: true
-            }) }}
-
-            {{ button({
-              ariaLabel: "Up",
-              variant: "warning",
-              icon: "arrow-up",
-              small: true
-            }) }}
-
-            {{ button({
-              ariaLabel: "Down",
-              variant: "warning",
-              icon: "arrow-down",
-              small: true
-            }) }}
+            {% endfor %}
           </div>
+          {% endfor %}
 
+          <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible">
+
+          {% for row in examples | batch(4) %}
           <div class="nhsuk-button-group nhsuk-u-margin-bottom-0">
+            {% for item in row %}
             {{ button({
-              ariaLabel: "Left",
+              ariaLabel: item.name,
               variant: "login",
-              icon: "arrow-left",
+              icon: item.modifier,
               small: true
             }) }}
-
-            {{ button({
-              ariaLabel: "Right",
-              variant: "login",
-              icon: "arrow-right",
-              small: true
-            }) }}
-
-            {{ button({
-              ariaLabel: "Up",
-              variant: "login",
-              icon: "arrow-up",
-              small: true
-            }) }}
-
-            {{ button({
-              ariaLabel: "Down",
-              variant: "login",
-              icon: "arrow-down",
-              small: true
-            }) }}
+            {% endfor %}
           </div>
+          {% endfor %}
 
+          <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible">
+
+          {% for row in examples | batch(4) %}
           <div class="nhsuk-button-group nhsuk-u-margin-bottom-0">
+            {% for item in row %}
             {{ button({
-              ariaLabel: "Left",
+              ariaLabel: item.name,
               variant: "secondary",
-              icon: "arrow-left",
+              icon: item.modifier,
               small: true
             }) }}
-
-            {{ button({
-              ariaLabel: "Right",
-              variant: "secondary",
-              icon: "arrow-right",
-              small: true
-            }) }}
-
-            {{ button({
-              ariaLabel: "Up",
-              variant: "secondary",
-              icon: "arrow-up",
-              small: true
-            }) }}
-
-            {{ button({
-              ariaLabel: "Down",
-              variant: "secondary",
-              icon: "arrow-down",
-              small: true
-            }) }}
+            {% endfor %}
           </div>
+          {% endfor %}
         </div>
 
         <div class="nhsuk-grid-column-one-third">
           <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
 
+          {% for row in examples | batch(4) %}
           <div class="nhsuk-button-group nhsuk-u-margin-bottom-0">
+            {% for item in row %}
             {{ button({
-              ariaLabel: "Left",
-              icon: "arrow-left",
+              ariaLabel: item.name,
+              icon: item.modifier,
               small: true,
               href: "#"
             }) }}
-
-            {{ button({
-              ariaLabel: "Right",
-              icon: "arrow-right",
-              small: true,
-              href: "#"
-            }) }}
-
-            {{ button({
-              ariaLabel: "Up",
-              icon: "arrow-up",
-              small: true,
-              href: "#"
-            }) }}
-
-            {{ button({
-              ariaLabel: "Down",
-              icon: "arrow-down",
-              small: true,
-              href: "#"
-            }) }}
+            {% endfor %}
           </div>
+          {% endfor %}
 
+          <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible">
+
+          {% for row in examples | batch(4) %}
           <div class="nhsuk-button-group nhsuk-u-margin-bottom-0">
+            {% for item in row %}
             {{ button({
-              ariaLabel: "Left",
+              ariaLabel: item.name,
               variant: "warning",
-              icon: "arrow-left",
+              icon: item.modifier,
               small: true,
               href: "#"
             }) }}
-
-            {{ button({
-              ariaLabel: "Right",
-              variant: "warning",
-              icon: "arrow-right",
-              small: true,
-              href: "#"
-            }) }}
-
-            {{ button({
-              ariaLabel: "Up",
-              variant: "warning",
-              icon: "arrow-up",
-              small: true,
-              href: "#"
-            }) }}
-
-            {{ button({
-              ariaLabel: "Down",
-              variant: "warning",
-              icon: "arrow-down",
-              small: true,
-              href: "#"
-            }) }}
+            {% endfor %}
           </div>
+          {% endfor %}
 
+          <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible">
+
+          {% for row in examples | batch(4) %}
           <div class="nhsuk-button-group nhsuk-u-margin-bottom-0">
+            {% for item in row %}
             {{ button({
-              ariaLabel: "Left",
+              ariaLabel: item.name,
               variant: "login",
-              icon: "arrow-left",
+              icon: item.modifier,
               small: true,
               href: "#"
             }) }}
-
-            {{ button({
-              ariaLabel: "Right",
-              variant: "login",
-              icon: "arrow-right",
-              small: true,
-              href: "#"
-            }) }}
-
-            {{ button({
-              ariaLabel: "Up",
-              variant: "login",
-              icon: "arrow-up",
-              small: true,
-              href: "#"
-            }) }}
-
-            {{ button({
-              ariaLabel: "Down",
-              variant: "login",
-              icon: "arrow-down",
-              small: true,
-              href: "#"
-            }) }}
+            {% endfor %}
           </div>
+          {% endfor %}
 
+          <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible">
+
+          {% for row in examples | batch(4) %}
           <div class="nhsuk-button-group nhsuk-u-margin-bottom-0">
+            {% for item in row %}
             {{ button({
-              ariaLabel: "Left",
+              ariaLabel: item.name,
               variant: "secondary",
-              icon: "arrow-left",
+              icon: item.modifier,
               small: true,
               href: "#"
             }) }}
-
-            {{ button({
-              ariaLabel: "Right",
-              variant: "secondary",
-              icon: "arrow-right",
-              small: true,
-              href: "#"
-            }) }}
-
-            {{ button({
-              ariaLabel: "Up",
-              variant: "secondary",
-              icon: "arrow-up",
-              small: true,
-              href: "#"
-            }) }}
-
-            {{ button({
-              ariaLabel: "Down",
-              variant: "secondary",
-              icon: "arrow-down",
-              small: true,
-              href: "#"
-            }) }}
+            {% endfor %}
           </div>
+          {% endfor %}
         </div>
 
         <div class="nhsuk-grid-column-one-third">
           <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
 
+          {% for row in examples | batch(4) %}
           <div class="nhsuk-button-group nhsuk-u-margin-bottom-0">
+            {% for item in row %}
             {{ button({
-              ariaLabel: "Left",
-              icon: "arrow-left",
+              ariaLabel: item.name,
+              icon: item.modifier,
               small: true,
               disabled: true
             }) }}
-
-            {{ button({
-              ariaLabel: "Right",
-              icon: "arrow-right",
-              small: true,
-              disabled: true
-            }) }}
-
-            {{ button({
-              ariaLabel: "Up",
-              icon: "arrow-up",
-              small: true,
-              disabled: true
-            }) }}
-
-            {{ button({
-              ariaLabel: "Down",
-              icon: "arrow-down",
-              small: true,
-              disabled: true
-            }) }}
+            {% endfor %}
           </div>
+          {% endfor %}
 
+          <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible">
+
+          {% for row in examples | batch(4) %}
           <div class="nhsuk-button-group nhsuk-u-margin-bottom-0">
+            {% for item in row %}
             {{ button({
-              ariaLabel: "Left",
+              ariaLabel: item.name,
               variant: "warning",
-              icon: "arrow-left",
+              icon: item.modifier,
               small: true,
               disabled: true
             }) }}
-
-            {{ button({
-              ariaLabel: "Right",
-              variant: "warning",
-              icon: "arrow-right",
-              small: true,
-              disabled: true
-            }) }}
-
-            {{ button({
-              ariaLabel: "Up",
-              variant: "warning",
-              icon: "arrow-up",
-              small: true,
-              disabled: true
-            }) }}
-
-            {{ button({
-              ariaLabel: "Down",
-              variant: "warning",
-              icon: "arrow-down",
-              small: true,
-              disabled: true
-            }) }}
+            {% endfor %}
           </div>
+          {% endfor %}
 
+          <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible">
+
+          {% for row in examples | batch(4) %}
           <div class="nhsuk-button-group nhsuk-u-margin-bottom-0">
+            {% for item in row %}
             {{ button({
-              ariaLabel: "Left",
+              ariaLabel: item.name,
               variant: "login",
-              icon: "arrow-left",
+              icon: item.modifier,
               small: true,
               disabled: true
             }) }}
-
-            {{ button({
-              ariaLabel: "Right",
-              variant: "login",
-              icon: "arrow-right",
-              small: true,
-              disabled: true
-            }) }}
-
-            {{ button({
-              ariaLabel: "Up",
-              variant: "login",
-              icon: "arrow-up",
-              small: true,
-              disabled: true
-            }) }}
-
-            {{ button({
-              ariaLabel: "Down",
-              variant: "login",
-              icon: "arrow-down",
-              small: true,
-              disabled: true
-            }) }}
+            {% endfor %}
           </div>
+          {% endfor %}
 
+          <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible">
+
+          {% for row in examples | batch(4) %}
           <div class="nhsuk-button-group nhsuk-u-margin-bottom-0">
+            {% for item in row %}
             {{ button({
-              ariaLabel: "Left",
+              ariaLabel: item.name,
               variant: "secondary",
-              icon: "arrow-left",
+              icon: item.modifier,
               small: true,
               disabled: true
             }) }}
-
-            {{ button({
-              ariaLabel: "Right",
-              variant: "secondary",
-              icon: "arrow-right",
-              small: true,
-              disabled: true
-            }) }}
-
-            {{ button({
-              ariaLabel: "Up",
-              variant: "secondary",
-              icon: "arrow-up",
-              small: true,
-              disabled: true
-            }) }}
-
-            {{ button({
-              ariaLabel: "Down",
-              variant: "secondary",
-              icon: "arrow-down",
-              small: true,
-              disabled: true
-            }) }}
+            {% endfor %}
           </div>
+          {% endfor %}
         </div>
       </div>
     </div>
@@ -1283,111 +902,54 @@
         <div class="nhsuk-grid-column-one-third">
           <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
 
+          {% for row in examples | batch(4) %}
           <div class="nhsuk-button-group nhsuk-u-margin-bottom-0">
+            {% for item in row %}
             {{ button({
-              ariaLabel: "Left",
+              ariaLabel: item.name,
               variant: "secondary-solid",
-              icon: "arrow-left",
+              icon: item.modifier,
               small: true
             }) }}
-
-            {{ button({
-              ariaLabel: "Right",
-              variant: "secondary-solid",
-              icon: "arrow-right",
-              small: true
-            }) }}
-
-            {{ button({
-              ariaLabel: "Up",
-              variant: "secondary-solid",
-              icon: "arrow-up",
-              small: true
-            }) }}
-
-            {{ button({
-              ariaLabel: "Down",
-              variant: "secondary-solid",
-              icon: "arrow-down",
-              small: true
-            }) }}
+            {% endfor %}
           </div>
+          {% endfor %}
         </div>
 
         <div class="nhsuk-grid-column-one-third">
           <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
 
+          {% for row in examples | batch(4) %}
           <div class="nhsuk-button-group nhsuk-u-margin-bottom-0">
+            {% for item in row %}
             {{ button({
-              ariaLabel: "Left",
+              ariaLabel: item.name,
               variant: "secondary-solid",
-              icon: "arrow-left",
+              icon: item.modifier,
               small: true,
               href: "#"
             }) }}
-
-            {{ button({
-              ariaLabel: "Right",
-              variant: "secondary-solid",
-              icon: "arrow-right",
-              small: true,
-              href: "#"
-            }) }}
-
-            {{ button({
-              ariaLabel: "Up",
-              variant: "secondary-solid",
-              icon: "arrow-up",
-              small: true,
-              href: "#"
-            }) }}
-
-            {{ button({
-              ariaLabel: "Down",
-              variant: "secondary-solid",
-              icon: "arrow-down",
-              small: true,
-              href: "#"
-            }) }}
+            {% endfor %}
           </div>
+          {% endfor %}
         </div>
 
         <div class="nhsuk-grid-column-one-third">
           <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
 
+          {% for row in examples | batch(4) %}
           <div class="nhsuk-button-group nhsuk-u-margin-bottom-0">
+            {% for item in row %}
             {{ button({
-              ariaLabel: "Left",
+              ariaLabel: item.name,
               variant: "secondary-solid",
-              icon: "arrow-left",
+              icon: item.modifier,
               small: true,
               disabled: true
             }) }}
-
-            {{ button({
-              ariaLabel: "Right",
-              variant: "secondary-solid",
-              icon: "arrow-right",
-              small: true,
-              disabled: true
-            }) }}
-
-            {{ button({
-              ariaLabel: "Up",
-              variant: "secondary-solid",
-              icon: "arrow-up",
-              small: true,
-              disabled: true
-            }) }}
-
-            {{ button({
-              ariaLabel: "Down",
-              variant: "secondary-solid",
-              icon: "arrow-down",
-              small: true,
-              disabled: true
-            }) }}
+            {% endfor %}
           </div>
+          {% endfor %}
         </div>
       </div>
     </div>
@@ -1519,6 +1081,117 @@
               disabled: true
             }) }}
           </div>
+        </div>
+      </div>
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-one-third">
+          <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+
+          {% for row in examples | batch(4) %}
+          <div class="nhsuk-button-group nhsuk-u-margin-bottom-0">
+            {% for item in row %}
+            {{ button({
+              ariaLabel: item.name,
+              variant: "reverse",
+              icon: item.modifier,
+              small: true
+            }) }}
+            {% endfor %}
+          </div>
+          {% endfor %}
+
+          <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible">
+
+          <p class="nhsuk-body-s">Shadow removed using: <br><code class="nhsuk-code--inline nhsuk-code--reverse">.app-button--no-shadow</code></p>
+
+          {% for row in examples | batch(4) %}
+          <div class="nhsuk-button-group nhsuk-u-margin-bottom-0">
+            {% for item in row %}
+            {{ button({
+              ariaLabel: item.name,
+              variant: "reverse",
+              classes: "app-button--no-shadow",
+              icon: item.modifier,
+              small: true
+            }) }}
+            {% endfor %}
+          </div>
+          {% endfor %}
+        </div>
+
+        <div class="nhsuk-grid-column-one-third">
+          <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+
+          {% for row in examples | batch(4) %}
+          <div class="nhsuk-button-group nhsuk-u-margin-bottom-0">
+            {% for item in row %}
+            {{ button({
+              ariaLabel: item.name,
+              variant: "reverse",
+              icon: item.modifier,
+              small: true,
+              href: "#"
+            }) }}
+            {% endfor %}
+          </div>
+          {% endfor %}
+
+          <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible">
+
+          <p class="nhsuk-body-s">Shadow removed using: <br><code class="nhsuk-code--inline nhsuk-code--reverse">.app-button--no-shadow</code></p>
+
+          {% for row in examples | batch(4) %}
+          <div class="nhsuk-button-group nhsuk-u-margin-bottom-0">
+            {% for item in row %}
+            {{ button({
+              ariaLabel: item.name,
+              variant: "reverse",
+              classes: "app-button--no-shadow",
+              icon: item.modifier,
+              small: true,
+              href: "#"
+            }) }}
+            {% endfor %}
+          </div>
+          {% endfor %}
+        </div>
+
+        <div class="nhsuk-grid-column-one-third">
+          <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+
+          {% for row in examples | batch(4) %}
+          <div class="nhsuk-button-group nhsuk-u-margin-bottom-0">
+            {% for item in row %}
+            {{ button({
+              ariaLabel: item.name,
+              variant: "reverse",
+              icon: item.modifier,
+              small: true,
+              disabled: true
+            }) }}
+            {% endfor %}
+          </div>
+          {% endfor %}
+
+          <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible">
+
+          <p class="nhsuk-body-s">Shadow removed using: <br><code class="nhsuk-code--inline nhsuk-code--reverse">.app-button--no-shadow</code></p>
+
+          {% for row in examples | batch(4) %}
+          <div class="nhsuk-button-group nhsuk-u-margin-bottom-0">
+            {% for item in row %}
+            {{ button({
+              ariaLabel: item.name,
+              variant: "reverse",
+              classes: "app-button--no-shadow",
+              icon: item.modifier,
+              small: true,
+              disabled: true
+            }) }}
+            {% endfor %}
+          </div>
+          {% endfor %}
         </div>
       </div>
     </div>
