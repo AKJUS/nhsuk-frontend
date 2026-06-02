@@ -418,6 +418,7 @@ If you are not using Nunjucks macros, update your HTML markup using the [header 
 - remove the `aria-label="Search"` and `role="img"` attributes from the `<svg>` icon
 - remove the `<title>Search</title>` child element from the `<svg>` icon
 - add the `aria-hidden="true"` attribute to the `<svg>` icon
+- update the search icon SVG path (if not already)
 
 ```patch
 - <button class="nhsuk-button nhsuk-button--small" data-module="nhsuk-button" type="submit">
@@ -425,7 +426,8 @@ If you are not using Nunjucks macros, update your HTML markup using the [header 
 -   <svg class="nhsuk-icon nhsuk-icon--search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" focusable="false" role="img" aria-label="Search">
 +   <svg class="nhsuk-icon nhsuk-icon--search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" focusable="false">
 -     <title>Search</title>
-      <path d="m20.7 19.3-4.1-4.1a7 7 0 1 0-1.4 1.4l4 4.1a1 1 0 0 0 1.5 0c.4-.4.4-1 0-1.4ZM6 11a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z"/>
+-     <path d="m20.7 19.3-4.1-4.1a7 7 0 1 0-1.4 1.4l4 4.1a1 1 0 0 0 1.5 0c.4-.4.4-1 0-1.4ZM6 11a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z"/>
++     <path d="m20.7 18.9-4.1-4.1a7 7 0 1 0-1.4 1.4l4 4.1a1 1 0 0 0 1.5 0c.4-.4.4-1 0-1.4ZM6 10.6a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z"/>
     </svg>
   </button>
 ```
