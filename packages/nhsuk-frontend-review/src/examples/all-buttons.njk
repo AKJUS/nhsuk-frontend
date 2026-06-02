@@ -1083,6 +1083,117 @@
           </div>
         </div>
       </div>
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-one-third">
+          <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+
+          {% for row in examples | batch(4) %}
+          <div class="nhsuk-button-group nhsuk-u-margin-bottom-0">
+            {% for item in row %}
+            {{ button({
+              ariaLabel: item.name,
+              variant: "reverse",
+              icon: item.modifier,
+              small: true
+            }) }}
+            {% endfor %}
+          </div>
+          {% endfor %}
+
+          <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible">
+
+          <p class="nhsuk-body-s">Shadow removed using: <br><code class="nhsuk-code--inline nhsuk-code--reverse">.app-button--no-shadow</code></p>
+
+          {% for row in examples | batch(4) %}
+          <div class="nhsuk-button-group nhsuk-u-margin-bottom-0">
+            {% for item in row %}
+            {{ button({
+              ariaLabel: item.name,
+              variant: "reverse",
+              classes: "app-button--no-shadow",
+              icon: item.modifier,
+              small: true
+            }) }}
+            {% endfor %}
+          </div>
+          {% endfor %}
+        </div>
+
+        <div class="nhsuk-grid-column-one-third">
+          <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+
+          {% for row in examples | batch(4) %}
+          <div class="nhsuk-button-group nhsuk-u-margin-bottom-0">
+            {% for item in row %}
+            {{ button({
+              ariaLabel: item.name,
+              variant: "reverse",
+              icon: item.modifier,
+              small: true,
+              href: "#"
+            }) }}
+            {% endfor %}
+          </div>
+          {% endfor %}
+
+          <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible">
+
+          <p class="nhsuk-body-s">Shadow removed using: <br><code class="nhsuk-code--inline nhsuk-code--reverse">.app-button--no-shadow</code></p>
+
+          {% for row in examples | batch(4) %}
+          <div class="nhsuk-button-group nhsuk-u-margin-bottom-0">
+            {% for item in row %}
+            {{ button({
+              ariaLabel: item.name,
+              variant: "reverse",
+              classes: "app-button--no-shadow",
+              icon: item.modifier,
+              small: true,
+              href: "#"
+            }) }}
+            {% endfor %}
+          </div>
+          {% endfor %}
+        </div>
+
+        <div class="nhsuk-grid-column-one-third">
+          <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+
+          {% for row in examples | batch(4) %}
+          <div class="nhsuk-button-group nhsuk-u-margin-bottom-0">
+            {% for item in row %}
+            {{ button({
+              ariaLabel: item.name,
+              variant: "reverse",
+              icon: item.modifier,
+              small: true,
+              disabled: true
+            }) }}
+            {% endfor %}
+          </div>
+          {% endfor %}
+
+          <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible">
+
+          <p class="nhsuk-body-s">Shadow removed using: <br><code class="nhsuk-code--inline nhsuk-code--reverse">.app-button--no-shadow</code></p>
+
+          {% for row in examples | batch(4) %}
+          <div class="nhsuk-button-group nhsuk-u-margin-bottom-0">
+            {% for item in row %}
+            {{ button({
+              ariaLabel: item.name,
+              variant: "reverse",
+              classes: "app-button--no-shadow",
+              icon: item.modifier,
+              small: true,
+              disabled: true
+            }) }}
+            {% endfor %}
+          </div>
+          {% endfor %}
+        </div>
+      </div>
     </div>
   </section>
 {% endblock %}
