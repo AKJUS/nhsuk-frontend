@@ -280,7 +280,7 @@ You can also [add icons](https://service-manual.nhs.uk/design-system/styles/icon
 
 If you use Sass and you've changed the default `/assets/` public path (for example, Nunjucks `assetPath`), make sure `$nhsuk-assets-path` is configured:
 
-```scss
+```patch
   @forward "nhsuk-frontend/dist/nhsuk" with (
 +   $nhsuk-assets-path: "/public/assets/",
     $nhsuk-fonts-path: "https://assets.nhs.uk/fonts/"
