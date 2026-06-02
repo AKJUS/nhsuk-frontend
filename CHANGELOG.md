@@ -385,7 +385,7 @@ Or when using the JavaScript API:
 
 The previous `maxwords` option and word counting behaviour are deprecated and will be removed in a future release.
 
-This was added in pull requests [#1893: Deprecate character count `maxwords` and add `countType` option](https://github.com/nhsuk/nhsuk-frontend/pull/1893) and [#1899: Add character count `countType: "words"` option using Intl.Segmenter](https://github.com/nhsuk/nhsuk-frontend/pull/1899).
+This change was introduced in pull requests [#1893: Deprecate character count `maxwords` and add `countType` option](https://github.com/nhsuk/nhsuk-frontend/pull/1893) and [#1899: Add character count `countType: "words"` option using Intl.Segmenter](https://github.com/nhsuk/nhsuk-frontend/pull/1899).
 
 #### Rename Sass mixin for white link style
 
