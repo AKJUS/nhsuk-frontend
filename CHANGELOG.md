@@ -325,6 +325,32 @@ If you are using our Nunjucks [page template](https://service-manual.nhs.uk/desi
 
 This was added in [pull request #1921: Add a template with all components imported](https://github.com/nhsuk/nhsuk-frontend/pull/1921).
 
+#### Style links with text colour
+
+You can now style links with text colour by adding the `nhsuk-link--text-colour` HTML class, or by including the Sass mixin for custom components:
+
+```scss
+.app-component__link {
+  @include nhsuk-link-style-text;
+}
+```
+
+This was added in [pull request #1946: Updates to link classes and mixins, support for action link as a button](https://github.com/nhsuk/nhsuk-frontend/pull/1946).
+
+#### Style links to remove underlines
+
+You can now remove underlines from links by adding the `nhsuk-link--no-underline` HTML class, or by including the Sass mixin for custom components:
+
+```scss
+.app-component__link {
+  @include nhsuk-link-style-no-underline;
+}
+```
+
+An underline still appears when the user hovers their cursor over the link.
+
+This was added in [pull request #1946: Updates to link classes and mixins, support for action link as a button](https://github.com/nhsuk/nhsuk-frontend/pull/1946).
+
 ### :wastebasket: **Deprecated features**
 
 #### Rename the character count `maxwords` option
