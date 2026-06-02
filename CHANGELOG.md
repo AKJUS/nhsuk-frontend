@@ -181,6 +181,8 @@ This was added in [pull request #1869: Add date input `day`, `month` and `year` 
 
 For consistency with other components, we’ve added new Nunjucks macro options:
 
+- Action link `element` and `type` options
+- Back link `type` option
 - Character count `autocomplete` option
 - Checkboxes and radios `formGroup.classes` option
 - Date input and password input `inputWrapper` option
@@ -190,7 +192,7 @@ For consistency with other components, we’ve added new Nunjucks macro options:
 
 Visit the [design system in the NHS digital service manual](https://service-manual.nhs.uk/design-system/components) to see Nunjucks options for each component.
 
-This was added in [pull request #1916: Add disabled component examples and review Nunjucks options](https://github.com/nhsuk/nhsuk-frontend/pull/1916).
+This was added in pull requests [#1916: Add disabled component examples and review Nunjucks options](https://github.com/nhsuk/nhsuk-frontend/pull/1916) and [#1946: Updates to link classes and mixins, support for action link as a button](https://github.com/nhsuk/nhsuk-frontend/pull/1946).
 
 #### Added a top-level `disabled` Nunjucks option to more form controls
 
@@ -325,6 +327,32 @@ If you are using our Nunjucks [page template](https://service-manual.nhs.uk/desi
 
 This was added in [pull request #1921: Add a template with all components imported](https://github.com/nhsuk/nhsuk-frontend/pull/1921).
 
+#### Style links with text colour
+
+You can now style links with text colour by adding the `nhsuk-link--text-colour` HTML class, or by including the Sass mixin for custom components:
+
+```scss
+.app-component__link {
+  @include nhsuk-link-style-text;
+}
+```
+
+This was added in [pull request #1946: Updates to link classes and mixins, support for action link as a button](https://github.com/nhsuk/nhsuk-frontend/pull/1946).
+
+#### Style links to remove underlines
+
+You can now remove underlines from links by adding the `nhsuk-link--no-underline` HTML class, or by including the Sass mixin for custom components:
+
+```scss
+.app-component__link {
+  @include nhsuk-link-style-no-underline;
+}
+```
+
+An underline still appears when the user hovers their cursor over the link.
+
+This was added in [pull request #1946: Updates to link classes and mixins, support for action link as a button](https://github.com/nhsuk/nhsuk-frontend/pull/1946).
+
 ### :wastebasket: **Deprecated features**
 
 #### Rename the character count `maxwords` option
@@ -359,7 +387,15 @@ Or when using the JavaScript API:
 
 The previous `maxwords` option and word counting behaviour are deprecated and will be removed in a future release.
 
-This was added in pull requests [#1893: Deprecate character count `maxwords` and add `countType` option](https://github.com/nhsuk/nhsuk-frontend/pull/1893) and [#1899: Add character count `countType: "words"` option using Intl.Segmenter](https://github.com/nhsuk/nhsuk-frontend/pull/1899).
+This change was introduced in pull requests [#1893: Deprecate character count `maxwords` and add `countType` option](https://github.com/nhsuk/nhsuk-frontend/pull/1893) and [#1899: Add character count `countType: "words"` option using Intl.Segmenter](https://github.com/nhsuk/nhsuk-frontend/pull/1899).
+
+#### Rename Sass mixin for white link style
+
+If you use the Sass `nhsuk-link-style-white` mixin, you should rename it to `nhsuk-link-style-reverse`.
+
+The previous name is deprecated and will be removed in a future release.
+
+This change was introduced in [pull request #1946: Updates to link classes and mixins, support for action link as a button](https://github.com/nhsuk/nhsuk-frontend/pull/1946).
 
 ### :recycle: **Changes**
 
