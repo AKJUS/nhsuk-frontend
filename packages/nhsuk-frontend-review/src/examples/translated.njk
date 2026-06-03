@@ -74,7 +74,8 @@
           text: "Peidiwch â chynnwys gwybodaeth bersonol, fel eich enw, dyddiad geni na rhif y GIG"
         },
         name: "with-translations-maxwords",
-        maxwords: 10,
+        maxlength: 10,
+        countType: "words",
         textareaDescriptionText: "Gallwch ddefnyddio hyd at %{count} nod",
         wordsUnderLimitText: {
           one: "Mae gennych %{count} gair ar ôl",
@@ -93,19 +94,48 @@
         }
       }) }}
 
+      {{ dateInput({
+        fieldset: {
+          legend: {
+            text: "Beth yw eich dyddiad geni?",
+            size: "l",
+            isPageHeading: true
+          }
+        },
+        hint: {
+          text: "Er enghraifft, 31 3 1980"
+        },
+        id: "with-translations-date",
+        day: {
+          label: {
+            text: "Dydd"
+          }
+        },
+        month: {
+          label: {
+            text: "Mis"
+          }
+        },
+        year: {
+          label: {
+            text: "Blwyddyn"
+          }
+        }
+      }) }}
+
       {{ passwordInput({
         label: {
-          text: 'Cyfrinair',
-          size: 'l',
+          text: "Cyfrinair",
+          size: "l",
           isPageHeading: true
         },
-        id: 'with-translations-password',
-        name: 'example',
-        showPasswordText: 'Datguddia',
-        hidePasswordText: 'Cuddio',
-        showPasswordAriaLabelText: 'Datgelu cyfrinair',
-        hidePasswordAriaLabelText: 'Cuddio cyfrinair',
-        passwordShownAnnouncementText: 'Mae eich cyfrinair yn weladwy.',
+        id: "with-translations-password",
+        name: "example",
+        showPasswordText: "Datguddia",
+        hidePasswordText: "Cuddio",
+        showPasswordAriaLabelText: "Datgelu cyfrinair",
+        hidePasswordAriaLabelText: "Cuddio cyfrinair",
+        passwordShownAnnouncementText: "Mae eich cyfrinair yn weladwy.",
         passwordHiddenAnnouncementText: "Mae eich cyfrinair wedi'i guddio."
       }) }}
 

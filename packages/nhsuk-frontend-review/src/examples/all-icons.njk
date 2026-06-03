@@ -2,16 +2,26 @@
 
 {% set pageName = "Icons" %}
 
-{% set examples = {
-  "Arrow left": "arrow-left",
-  "Arrow right": "arrow-right",
-  "Arrow right circle": "arrow-right-circle",
-  "Chevron right circle": "chevron-right-circle",
-  "Cross": "cross",
-  "Tick": "tick",
-  "Search": "search",
-  "User": "user"
-} %}
+{% set icons = [
+  { name: "Arrow left", modifier: "arrow-left" },
+  { name: "Arrow right", modifier: "arrow-right" },
+  { name: "Arrow up", modifier: "arrow-up" },
+  { name: "Arrow down", modifier: "arrow-down" },
+  { name: "Arrow left circle", modifier: "arrow-left-circle" },
+  { name: "Arrow right circle", modifier: "arrow-right-circle" },
+  { name: "Arrow up circle", modifier: "arrow-up-circle" },
+  { name: "Arrow down circle", modifier: "arrow-down-circle" },
+  { name: "Chevron left circle", modifier: "chevron-left-circle" },
+  { name: "Chevron right circle", modifier: "chevron-right-circle" },
+  { name: "Chevron up circle", modifier: "chevron-up-circle" },
+  { name: "Chevron down circle", modifier: "chevron-down-circle" },
+  { name: "Cross", modifier: "cross" },
+  { name: "Tick", modifier: "tick" },
+  { name: "Minus", modifier: "minus" },
+  { name: "Plus", modifier: "plus" },
+  { name: "Search", modifier: "search" },
+  { name: "User", modifier: "user" }
+] %}
 
 {% block beforeContent %}
   {{ breadcrumb({
@@ -42,28 +52,28 @@
         <div class="nhsuk-grid-column-full">
           {% set rows = [] %}
 
-          {% for name, modifier in examples %}
+          {% for icon in icons %}
             {% set modifierHtml %}
-              <var class="nhsuk-body-s">{{ modifier }}</var>
+              <var class="nhsuk-body-s">{{ icon.modifier }}</var>
             {% endset %}
 
             {% set iconHtml %}
               {% for size, params in {
                 "100%": {},
-                "125%": { classes: "nhsuk-icon--size-25" },
-                "150%": { classes: "nhsuk-icon--size-50" },
-                "175%": { classes: "nhsuk-icon--size-75" },
-                "200%": { classes: "nhsuk-icon--size-100" }
+                "125%": { size: 25 },
+                "150%": { size: 50 },
+                "175%": { size: 75 },
+                "200%": { size: 100 }
               } %}
                 <figure class="nhsuk-u-display-inline-block nhsuk-u-text-align-centre nhsuk-u-margin-1">
-                  {{ nhsukIcon(modifier, params) }}
+                  {{ nhsukIcon(icon.modifier, params) }}
                   <figcaption class="nhsuk-body-s">{{ size }}</figcaption>
                 </figure>
               {% endfor %}
             {% endset %}
 
             {% set rows = (rows.push([
-              { text: name, header: "Name" },
+              { text: icon.name, header: "Name" },
               { html: modifierHtml, header: "Modifier" },
               { text: iconHtml | safe }
             ]), rows) %}
@@ -105,9 +115,9 @@
         <div class="nhsuk-grid-column-full">
           {% set rows = [] %}
 
-          {% for name, modifier in examples %}
+          {% for icon in icons %}
             {% set modifierHtml %}
-              <var class="nhsuk-body-s">{{ modifier }}</var>
+              <var class="nhsuk-body-s">{{ icon.modifier }}</var>
             {% endset %}
 
             {% set iconHtml %}
@@ -119,14 +129,14 @@
                 "200%": { classes: "nhsuk-icon--size-100" }
               } %}
                 <figure class="nhsuk-u-display-inline-block nhsuk-u-text-align-centre nhsuk-u-margin-1">
-                  {{ nhsukIcon(modifier, params) }}
+                  {{ nhsukIcon(icon.modifier, params) }}
                   <figcaption class="nhsuk-body-s">{{ size }}</figcaption>
                 </figure>
               {% endfor %}
             {% endset %}
 
             {% set rows = (rows.push([
-              { text: name, header: "Name" },
+              { text: icon.name, header: "Name" },
               { html: modifierHtml, header: "Modifier" },
               { text: iconHtml | safe }
             ]), rows) %}

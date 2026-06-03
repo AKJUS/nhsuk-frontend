@@ -25,7 +25,7 @@
   "scripts": {
     "install:playwright": "playwright install chromium --with-deps --only-shell",
     "install:puppeteer": "puppeteer browsers install",
-    "preclean": "del-cli dist",
+    "preclean": "del-cli dist/*",
     "clean": "npm run clean --if-present --workspaces",
     "postclean": "tsc --build --clean",
     "build": "npm run build --if-present --workspaces",
@@ -95,7 +95,7 @@
     "eslint-plugin-testing-library": "^7.16.2",
     "globals": "^17.6.0",
     "gulp": "^5.0.1",
-    "html-validate": "^11.2.0",
+    "html-validate": "^11.4.0",
     "jest": "^30.3.0",
     "nhsuk-frontend": "*",
     "playwright-core": "^1.60.0",
