@@ -6,7 +6,7 @@
 // button icon vertical alignment
 
 .app-button--no-shadow {
-  border: 1px solid transparent;
+  border-color: transparent !important;
   box-shadow: none !important;
   line-height: 1;
 
@@ -14,5 +14,9 @@
   &:active,
   &:active:focus {
     top: 0;
+  }
+
+  &::before {
+    border: none !important;
   }
 }
