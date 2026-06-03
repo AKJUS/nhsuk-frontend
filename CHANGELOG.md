@@ -1,5 +1,13 @@
 # NHS.UK frontend Changelog
 
+## 10.5.1 - 3 June 2026
+
+Note: This release was created from the `support/10.x` branch.
+
+### :wrench: **Fixes**
+
+- [#1954: Improve link styles when focused and in high constrast mode](https://github.com/nhsuk/nhsuk-frontend/pull/1954)
+
 ## 10.5.0 - 2 June 2026
 
 Note: This release was created from the `support/10.x` branch.

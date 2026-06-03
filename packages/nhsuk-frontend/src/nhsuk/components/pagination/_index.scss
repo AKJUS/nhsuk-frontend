@@ -166,12 +166,8 @@
     text-align: center;
     @include nhsuk-font-size(19);
 
-    &:hover {
+    &:not(:focus):hover {
       background-color: nhsuk-colour("grey-4");
-    }
-
-    &:focus {
-      @include nhsuk-link-style-focus;
     }
   }
 
@@ -195,7 +191,7 @@
   // Numbered item links
   .nhsuk-pagination--numbered .nhsuk-pagination__link {
     position: static;
-    @include nhsuk-link-style;
+    @include nhsuk-link-style-default;
     @include nhsuk-font-size(19);
 
     // Increase the touch area for the link to the parent element.
@@ -214,6 +210,7 @@
 
   // Current number
   .nhsuk-pagination--numbered .nhsuk-pagination__item--current {
+    outline: 1px solid transparent;
     background-color: nhsuk-colour("blue");
     @include nhsuk-typography-weight-bold;
 
@@ -222,7 +219,7 @@
     }
   }
 
-  .nhsuk-pagination--numbered .nhsuk-pagination__item--current:hover {
+  .nhsuk-pagination--numbered .nhsuk-pagination__item--current:not(:focus):hover {
     background-color: nhsuk-colour("blue");
   }
 
@@ -231,7 +228,7 @@
     @include nhsuk-typography-weight-bold;
 
     // Remove hover state for ellipsis items as they don't contain links
-    &:hover {
+    &:not(:focus):hover {
       background-color: transparent;
     }
   }
