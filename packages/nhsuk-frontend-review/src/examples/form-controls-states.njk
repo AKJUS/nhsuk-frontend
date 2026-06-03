@@ -91,12 +91,13 @@
             input({
               label: item.label,
               errorMessage: item.errorMessage,
-              value: value,
               id: "input-with-value" if value else "input",
+              name: "input-with-value" if value else "input",
+              value: value,
+              disabled: item.disabled,
               classes: item.classes,
-              formGroup: item.formGroup,
               attributes: item.attributes,
-              disabled: item.disabled
+              formGroup: item.formGroup
             }),
             loop.index
           ) | safe }}
@@ -115,12 +116,13 @@
             passwordInput({
               label: item.label,
               errorMessage: item.errorMessage,
-              value: value,
               id: "password-input-with-value" if value else "password-input",
+              name: "password-input-with-value" if value else "password-input",
+              value: value,
+              disabled: item.disabled,
               classes: item.classes,
-              formGroup: item.formGroup,
               attributes: item.attributes,
-              disabled: item.disabled
+              formGroup: item.formGroup
             }),
             loop.index
           ) | safe }}
@@ -139,12 +141,13 @@
             textarea({
               label: item.label,
               errorMessage: item.errorMessage,
-              value: value,
               id: "textarea-with-value" if value else "textarea",
+              name: "textarea-with-value" if value else "textarea",
+              value: value,
+              disabled: item.disabled,
               classes: item.classes,
-              formGroup: item.formGroup,
               attributes: item.attributes,
-              disabled: item.disabled
+              formGroup: item.formGroup
             }),
             loop.index
           ) | safe }}
@@ -163,13 +166,14 @@
             select({
               label: item.label,
               errorMessage: item.errorMessage,
-              value: value,
               id: "select-with-value" if value else "select",
-              classes: item.classes,
-              formGroup: item.formGroup,
-              attributes: item.attributes,
+              name: "select-with-value" if value else "select",
+              value: value,
+              items: exampleOptions,
               disabled: item.disabled,
-              items: exampleOptions
+              classes: item.classes,
+              attributes: item.attributes,
+              formGroup: item.formGroup
             }),
             loop.index
           ) | safe }}
@@ -185,6 +189,7 @@
       {{ uniqueHTML(
         checkboxes({
           idPrefix: "checkboxes",
+          name: "checkboxes",
           items: exampleItems
         }),
         loop.index
@@ -195,6 +200,7 @@
       {{ uniqueHTML(
         radios({
           idPrefix: "radios",
+          name: "radios",
           items: exampleItems
         }),
         loop.index
@@ -209,6 +215,7 @@
       {{ uniqueHTML(
         checkboxes({
           idPrefix: "checkboxes-small",
+          name: "checkboxes-small",
           small: true,
           items: exampleItemsSmall
         }),
@@ -220,6 +227,7 @@
       {{ uniqueHTML(
         radios({
           idPrefix: "radios-small",
+          name: "radios-small",
           small: true,
           items: exampleItemsSmall
         }),
@@ -236,13 +244,14 @@
         {{ uniqueHTML(
           fileUpload({
             label: item.label,
-            button: item.button,
             errorMessage: item.errorMessage,
-            id: 'file-upload',
+            id: "file-upload",
+            name: "file-upload",
             classes: item.classes,
-            formGroup: item.formGroup,
+            disabled: item.disabled,
             attributes: item.attributes,
-            disabled: item.disabled
+            button: item.button,
+            formGroup: item.formGroup
           }),
           loop.index
         ) | safe }}

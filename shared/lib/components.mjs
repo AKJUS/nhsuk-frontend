@@ -1,5 +1,5 @@
 import { readFileSync } from 'node:fs'
-import { basename, join } from 'node:path'
+import { basename, dirname, join } from 'node:path'
 
 import { paths } from '@nhsuk/frontend-config'
 
@@ -25,16 +25,21 @@ export async function load(component) {
   const { name, params } = await import(optionsPath)
 
   // Import examples (optional) with fallback
-  const fixtures = await import(fixturesPath).catch(() => {
-    return { examples: {} }
+  const fixtures = await import(fixturesPath).catch((error) => {
+    if ('code' in error && error.code === 'ERR_MODULE_NOT_FOUND') {
+      return { examples: {} }
+    }
+
+    throw error
   })
 
   // Sort examples by name, default at top
   const examples = Object.fromEntries(
     Object.entries(fixtures.examples).sort(([nameA], [nameB]) => {
       for (const [find, replace] of /** @type {const} */ ([
-        // Sort default to top
-        ['default', '!!!'],
+        // Sort default and disabled to top
+        ['default', '!!!A'],
+        ['disabled', '!!!B'],
 
         // Sort do before don't
         ['(do)', '1 do-dont'],
@@ -76,12 +81,12 @@ export async function loadAll() {
  * Get component names
  */
 export function getNames() {
-  const listing = files.getDirectories('nhsuk/components', {
+  const listing = files.getListing('nhsuk/components/*/template.njk', {
     cwd: join(paths.pkg, 'src')
   })
 
   // Use directory names only
-  return listing.map((directoryPath) => basename(directoryPath)).sort()
+  return listing.map((directoryPath) => basename(dirname(directoryPath))).sort()
 }
 
 /**
@@ -103,6 +108,11 @@ export function getMacroOptions(params) {
       required: param.required,
       description: param.description
     })
+
+    // Optional alias
+    if (param.alias) {
+      option.alias = param.alias
+    }
 
     // Optional released version
     if (param.released) {

@@ -39,13 +39,13 @@ false
 
 Type: number
 
-The maximum number of characters. If `maxwords` is provided, the `maxlength` option will be ignored.
+The maximum number of characters (or words if `countType` is set to `'words'`).
 
-### maxwords
+### maxwords (deprecated)
 
 Type: number
 
-The maximum number of words. If `maxwords` is provided, the `maxlength` option will be ignored.
+The maximum number of words. Replaced by the `maxlength` and `countType: 'words'` options.
 
 ### threshold
 
@@ -57,6 +57,55 @@ Default:
 
 ```json5
 0
+```
+
+### countType
+
+Type: string
+
+The count type (`'length'`, `'characters'` or `'words'`) used to count the text.
+
+Default:
+
+```json5
+'length'
+```
+
+### countFunction
+
+Type: function
+
+The count function used to count the text. Returns the count as a number.
+
+Default:
+
+```mjs
+CharacterCount.countFunctions.length
+```
+
+Count functions are called with:
+
+- `text` (string) - Textarea value
+- `context` (object) - Character count context
+
+```mjs
+(text, context) => {
+  return text.length
+}
+```
+
+Character count `context` objects contain the following properties:
+
+- `$textarea` - Textarea HTML element
+- `config` - Character count config
+- `segmenter` - Character count `Intl.Segmenter` (optional)
+
+Our built in count functions are available to call or extend via:
+
+```mjs
+CharacterCount.countFunctions.length
+CharacterCount.countFunctions.characters
+CharacterCount.countFunctions.words
 ```
 
 ### textareaDescriptionClass
@@ -215,7 +264,7 @@ Default:
 
 Type: object
 
-Message made available to assistive technologies, if none is already present in the HTML, to describe that the component accepts only a limited amount of content. The component will replace the `%{count}` placeholder with the value of the `maxlength` or `maxwords` option.
+Message made available to assistive technologies, if none is already present in the HTML, to describe that the component accepts only a limited amount of content. The component will replace the `%{count}` placeholder with the value of the `maxlength` option.
 
 Default:
 
