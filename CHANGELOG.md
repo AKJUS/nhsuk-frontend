@@ -6,6 +6,7 @@ Note: This release was created from the `support/10.x` branch.
 
 ### :wrench: **Fixes**
 
+- [#1964: Move details component link appearance to summary text](https://github.com/nhsuk/nhsuk-frontend/pull/1964)
 - [#1965: Make sure icons always use current text colour etc](https://github.com/nhsuk/nhsuk-frontend/pull/1965)
 
 ## 10.5.1 - 3 June 2026
