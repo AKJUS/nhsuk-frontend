@@ -6,9 +6,9 @@ Note: This release was created from the `support/10.x` branch.
 
 ### :new: **New features**
 
-#### Add utility class `nhsuk-u-font-family-code`
+#### Add utility class `nhsuk-u-font-monospace`
 
-We've added a new `nhsuk-u-font-family-code` utility class for displaying codes and ID numbers (such as NHS numbers or identifiers) in a monospace font.
+We've added a new `nhsuk-u-font-monospace` utility class for displaying codes and ID numbers (such as NHS numbers or identifiers) in a monospace font.
 
 This was added in [pull request #1961: Add code font modifier](https://github.com/nhsuk/nhsuk-frontend/pull/1962).
 
