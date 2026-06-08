@@ -1,5 +1,13 @@
 # NHS.UK frontend Changelog
 
+## Unreleased
+
+Note: This release was created from the `support/10.x` branch.
+
+### :wrench: **Fixes**
+
+- [#1965: Make sure icons always use current text colour etc](https://github.com/nhsuk/nhsuk-frontend/pull/1965)
+
 ## 10.5.1 - 3 June 2026
 
 Note: This release was created from the `support/10.x` branch.
