@@ -4,15 +4,19 @@
 
 Note: This release was created from the `support/10.x` branch.
 
-### :new: **New features**
-
-#### Add utility class `nhsuk-u-font-monospace`
-
-We've added a new `nhsuk-u-font-monospace` utility class for displaying codes and ID numbers (such as NHS numbers or identifiers) in a monospace font.
-
-This was added in [pull request #1961: Add code font modifier](https://github.com/nhsuk/nhsuk-frontend/pull/1962).
-
 ### :wrench: **Fixes**
+
+In [pull request #1962: Add code and monospace font utilities](https://github.com/nhsuk/nhsuk-frontend/pull/1962) we've added missing Sass mixins and HTML classes. You can now style codes and sequences (such as NHS numbers) by adding the `nhsuk-u-font-code` HTML class, or by including the Sass mixin for custom components:
+
+```scss
+.app-component__element {
+  @include nhsuk-font-code;
+}
+```
+
+To render text with a monospace font you can add the `nhsuk-u-font-monospace` HTML class, or by including the corresponding `nhsuk-font-monospace` Sass mixin.
+
+We've made fixes to NHS.UK frontend in the following pull requests:
 
 - [#1964: Move details component link appearance to summary text](https://github.com/nhsuk/nhsuk-frontend/pull/1964)
 - [#1965: Make sure icons always use current text colour etc](https://github.com/nhsuk/nhsuk-frontend/pull/1965)
