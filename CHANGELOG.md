@@ -4,6 +4,30 @@
 
 Note: This release was created from the `support/10.x` branch.
 
+### :wastebasket: **Deprecated features**
+
+#### Rename Sass mixins for font weights
+
+We've renamed Sass mixins for font weights. You can still use the previous names but we'll remove them in a future breaking release.
+
+If you use Sass and you've used the following Sass mixins:
+
+- replace `nhsuk-typography-weight-normal` with `nhsuk-font-weight-normal`
+- replace `nhsuk-typography-weight-bold` with `nhsuk-font-weight-bold`
+
+```patch
+  .app-component {
+    display: block;
+-   @include nhsuk-typography-weight-bold;
++   @include nhsuk-font-weight-bold;
+    @include nhsuk-responsive-margin(4, "bottom");
+  }
+```
+
+The previous names are deprecated and will be removed in a future release.
+
+This change was introduced in [pull request #1962: Add code and monospace font utilities](https://github.com/nhsuk/nhsuk-frontend/pull/1962).
+
 ### :wrench: **Fixes**
 
 In [pull request #1962: Add code and monospace font utilities](https://github.com/nhsuk/nhsuk-frontend/pull/1962) we've added missing Sass mixins and HTML classes. You can now style codes and sequences (such as NHS numbers) by adding the `nhsuk-u-font-code` HTML class, or by including the Sass mixin for custom components:
